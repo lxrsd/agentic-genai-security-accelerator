@@ -1,0 +1,267 @@
+:root {
+  --bg: #0b1220;
+  --panel: #121a2b;
+  --panel-2: #172133;
+  --text: #e7ecf3;
+  --muted: #a8b3c7;
+  --accent: #ff9900;
+  --accent-dark: #e78600;
+  --border: #22314b;
+  --white: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #09111f;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0b1220 0%, #111b2f 55%, #1a2742 100%);
+  padding: 90px 0 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow,
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+  color: var(--white);
+}
+
+h1 {
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
+.hero-text {
+  max-width: 800px;
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 28px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #111;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(255,255,255,0.03);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.section {
+  padding: 72px 0;
+}
+
+.alt-bg {
+  background: #0d1526;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-heading {
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+.two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.three-col {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card,
+.feature-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.feature-card {
+  background: var(--panel-2);
+}
+
+.architecture-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.arch-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+.arrow {
+  font-size: 1.5rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.clean-list {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.question {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.timeline {
+  display: grid;
+  gap: 18px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.timeline-phase {
+  min-width: 86px;
+  text-align: center;
+  background: var(--accent);
+  color: #111;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.footer {
+  padding: 26px 0;
+  border-top: 1px solid var(--border);
+  background: #08101d;
+  color: var(--muted);
+  text-align: center;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+p {
+  color: var(--muted);
+}
+
+li {
+  color: var(--muted);
+}
+
+strong {
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .two-col,
+  .three-col,
+  .question-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .architecture-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+  }
+}
