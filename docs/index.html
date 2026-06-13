@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic GenAI Security Accelerator</title>
+</head>
+<body>
+  <h1>Agentic GenAI Security Accelerator</h1>
+
+  <p>
+    A Prowler-powered AWS security posture accelerator that helps customers understand,
+    score, and improve their cloud security maturity using AI, MCP, and dashboarding.
+  </p>
+
+  <h2>What It Does</h2>
+  <ul>
+    <li>Uses Prowler to scan AWS accounts for security posture findings.</li>
+    <li>Exports Prowler findings into Amazon S3 as the raw findings lake.</li>
+    <li>Normalizes findings for dashboarding and reporting.</li>
+    <li>Calculates a 0–5 security maturity score.</li>
+    <li>Uses Amazon Bedrock agents to explain findings and recommend remediation.</li>
+    <li>Uses MCP to validate AWS documentation and approved context.</li>
+    <li>Provides a customer-facing dashboard and AI security chat experience.</li>
+  </ul>
+
+  <h2>Architecture</h2>
+  <p>
+    Customer AWS Account → Prowler Scan → S3 Findings Lake → Ingestion Lambda →
+    DynamoDB → Scoring Engine → Bedrock Agents → MCP Validation →
+    Dashboard + AI Chat + Reports
+  </p>
+
+  <h2>Dashboard Capabilities</h2>
+  <ul>
+    <li>Executive security posture overview</li>
+    <li>Prowler findings explorer</li>
+    <li>0–5 maturity score by pillar</li>
+    <li>Score improvement recommendations</li>
+    <li>AI security chat</li>
+    <li>Remediation center</li>
+    <li>Reports and audit history</li>
+  </ul>
+
+  <h2>Example Questions</h2>
+  <ul>
+    <li>Why is my score 2.7?</li>
+    <li>What did Prowler find?</li>
+    <li>What will bring me to a 5?</li>
+    <li>Do I need AWS WAF?</li>
+    <li>Which S3 buckets are exposed?</li>
+    <li>What should I fix first?</li>
+  </ul>
+
+  <h2>Governance</h2>
+  <ul>
+    <li>Read-only by default</li>
+    <li>Dry-run remediation</li>
+    <li>Human approval required</li>
+    <li>CloudWatch audit logging</li>
+    <li>S3 and DynamoDB encryption</li>
+    <li>Least-privilege IAM</li>
+  </ul>
+</body>
+</html>
