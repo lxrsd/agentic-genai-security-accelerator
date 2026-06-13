@@ -6,17 +6,20 @@
   <title>Agentic GenAI Security Accelerator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">AWS Security + GenAI + Prowler</p>
+      <p class="eyebrow">AWS Security + Agentic GenAI + Security Posture Acceleration</p>
+
       <h1>Agentic GenAI Security Accelerator</h1>
+
       <p class="hero-text">
-        A Prowler-first AWS security posture accelerator that helps customers
-        understand their current cloud security maturity, receive a 0–5 posture score,
-        explore findings through a dashboard, and use AI to identify what will improve
-        their score and strengthen their environment.
+        An AWS-native security posture accelerator that helps customers understand,
+        score, and improve their cloud security maturity using AWS security services,
+        Amazon S3, Amazon Bedrock, MCP, and a customer-facing AI dashboard.
       </p>
+
       <div class="hero-buttons">
         <a href="#architecture" class="btn btn-primary">View Architecture</a>
         <a href="#capabilities" class="btn btn-secondary">See Capabilities</a>
@@ -31,23 +34,25 @@
           <p class="section-label">Overview</p>
           <h2>What We’re Building</h2>
         </div>
+
         <div class="grid two-col">
           <div class="card">
             <h3>The Problem</h3>
             <p>
-              Customers often have fragmented security findings, little clarity on their
-              true security posture, and no simple way to understand what actions will
-              improve maturity the fastest.
+              Customers often have fragmented security findings, unclear visibility into
+              their current AWS security posture, and no simple way to understand which
+              actions will improve maturity the fastest.
             </p>
           </div>
+
           <div class="card">
             <h3>The Solution</h3>
             <p>
-              This accelerator uses <strong>Prowler</strong> to scan AWS environments,
-              exports findings into <strong>Amazon S3</strong>, normalizes and scores
-              them, and then uses <strong>Amazon Bedrock</strong>, <strong>MCP</strong>,
-              and a customer-facing <strong>dashboard</strong> to turn findings into
-              actionable, AI-guided security improvement.
+              This accelerator uses AWS security findings and posture signals, centralizes
+              them in <strong>Amazon S3</strong>, normalizes and scores the results, and
+              then uses <strong>Amazon Bedrock</strong>, <strong>MCP</strong>, and a
+              customer-facing dashboard to turn security data into actionable,
+              AI-guided posture improvement.
             </p>
           </div>
         </div>
@@ -58,19 +63,20 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Architecture</p>
-          <h2>End-to-End Flow</h2>
+          <h2>End-to-End AWS Security Acceleration Flow</h2>
           <p>
-            The accelerator is designed as a Prowler-first pipeline with AI enrichment,
-            posture scoring, and dashboard-based exploration.
+            The accelerator is designed as an AWS-native security posture workflow with
+            centralized findings, maturity scoring, AI enrichment, MCP validation, and
+            dashboard-based exploration.
           </p>
         </div>
 
         <div class="architecture-flow">
           <div class="arch-box">Customer AWS Account</div>
           <div class="arrow">→</div>
-          <div class="arch-box">Prowler Scan Engine</div>
+          <div class="arch-box">AWS Security Assessment Layer</div>
           <div class="arrow">→</div>
-          <div class="arch-box">Amazon S3 Findings Lake</div>
+          <div class="arch-box">Amazon S3 Security Findings Lake</div>
           <div class="arrow">→</div>
           <div class="arch-box">Ingestion Lambda</div>
           <div class="arrow">→</div>
@@ -87,25 +93,29 @@
 
         <div class="grid three-col mt-32">
           <div class="card">
-            <h3>Prowler</h3>
+            <h3>AWS Security Assessment Layer</h3>
             <p>
-              Performs AWS posture scanning and produces raw findings related to
-              S3, IAM, CloudTrail, GuardDuty coverage, encryption, compliance gaps,
-              and other security best practices.
+              Collects AWS security posture signals and findings across identity,
+              detection, data protection, logging, compliance, and governance areas.
+              Optional third-party assessment tools can also feed this layer when needed.
             </p>
           </div>
+
           <div class="card">
-            <h3>S3 + Ingestion</h3>
+            <h3>S3 Findings Lake</h3>
             <p>
-              Stores raw Prowler outputs as the findings lake. Lambda normalizes the
-              findings into a common schema for scoring, analysis, and dashboarding.
+              Amazon S3 stores raw security findings, processed findings, AI analysis,
+              and generated reports. This creates a central evidence layer for the
+              accelerator.
             </p>
           </div>
+
           <div class="card">
-            <h3>AI Layer</h3>
+            <h3>Agentic AI Layer</h3>
             <p>
-              Bedrock agents explain business impact, prioritize remediation,
-              generate improvement roadmaps, and power a natural-language chat experience.
+              Amazon Bedrock agents explain business impact, prioritize remediation,
+              generate improvement roadmaps, and power a natural-language security
+              conversation.
             </p>
           </div>
         </div>
@@ -116,50 +126,55 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Capabilities</p>
-          <h2>Core Features</h2>
+          <h2>Core Capabilities</h2>
         </div>
 
         <div class="grid three-col">
           <div class="feature-card">
             <h3>Security Posture Scoring</h3>
             <p>
-              Calculates a 0–5 maturity score across security pillars, helping
-              customers understand where they are and what is missing.
+              Calculates a 0–5 maturity score across security pillars so customers can
+              understand where they are today and what is missing.
             </p>
           </div>
+
           <div class="feature-card">
-            <h3>Prowler Findings Explorer</h3>
+            <h3>AWS Findings Explorer</h3>
             <p>
-              Displays normalized Prowler findings by severity, service,
-              resource, compliance mapping, and score impact.
+              Displays normalized findings by severity, service, resource, compliance
+              mapping, ownership, remediation status, and score impact.
             </p>
           </div>
+
           <div class="feature-card">
             <h3>AI Security Chat</h3>
             <p>
-              Lets users ask questions like “Why is my score 2.7?” or
-              “What will bring me to a 5?”
+              Lets customers ask natural-language questions such as “Why is my score
+              2.7?” or “What will bring me to a 5?”
             </p>
           </div>
+
           <div class="feature-card">
             <h3>Remediation Guidance</h3>
             <p>
-              Generates technical next steps, business impact explanations,
-              and recommended remediation actions in dry-run mode.
+              Generates technical next steps, executive explanations, remediation
+              plans, and dry-run implementation guidance.
             </p>
           </div>
+
           <div class="feature-card">
             <h3>MCP Validation</h3>
             <p>
-              Uses MCP to validate guidance against AWS documentation
-              and approved AWS context in a governed, explainable way.
+              Uses MCP to validate recommendations against AWS documentation and
+              approved AWS context in a governed, explainable way.
             </p>
           </div>
+
           <div class="feature-card">
             <h3>Customer Dashboard</h3>
             <p>
-              Gives customers an executive overview, findings explorer,
-              score improvement view, remediation center, and reporting experience.
+              Provides an executive overview, findings explorer, score improvement
+              view, remediation center, AI chat, and reporting experience.
             </p>
           </div>
         </div>
@@ -177,22 +192,40 @@
           <div class="card">
             <h3>How the Score Works</h3>
             <ul class="clean-list">
-              <li>Each pillar is scored from 0 to 5.</li>
+              <li>Each security pillar is scored from 0 to 5.</li>
               <li>Controls are marked as Implemented, Partial, Missing, Unknown, or Not Applicable.</li>
               <li>Not Applicable controls do not reduce the score.</li>
               <li>Applicable missing controls reduce the score.</li>
-              <li>The dashboard shows what actions will increase the score the most.</li>
+              <li>The dashboard shows which actions will improve the score the fastest.</li>
             </ul>
           </div>
+
           <div class="card">
-            <h3>Example Pillars</h3>
+            <h3>Security Pillars</h3>
             <ul class="clean-list">
-              <li>Identity & Governance</li>
-              <li>Visibility, Detection & Response</li>
+              <li>Identity &amp; Governance</li>
+              <li>Visibility, Detection &amp; Response</li>
               <li>Data Protection</li>
-              <li>Compliance & Audit Readiness</li>
+              <li>Compliance &amp; Audit Readiness</li>
               <li>Generative Security Intelligence</li>
             </ul>
+          </div>
+        </div>
+
+        <div class="score-example">
+          <div class="score-card">
+            <span class="score-number">2.7</span>
+            <span class="score-label">Current Score</span>
+          </div>
+
+          <div class="score-card">
+            <span class="score-number">4.1</span>
+            <span class="score-label">Projected Score After Recommended Fixes</span>
+          </div>
+
+          <div class="score-card">
+            <span class="score-number">5.0</span>
+            <span class="score-label">Target Maturity</span>
           </div>
         </div>
       </div>
@@ -202,23 +235,87 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Interactive Experience</p>
-          <h2>What Customers Can Ask</h2>
+          <h2>Security Conversation With the Customer</h2>
+          <p>
+            The accelerator turns security posture data into a natural-language
+            conversation. Customers can ask what the findings mean, what they should
+            fix first, and what will improve their score.
+          </p>
         </div>
 
         <div class="question-grid">
           <div class="question">Why is my score 2.7?</div>
-          <div class="question">What did Prowler find?</div>
+          <div class="question">What are my highest-risk findings?</div>
           <div class="question">What will bring me to a 5?</div>
           <div class="question">Do I need AWS WAF?</div>
           <div class="question">Which S3 buckets are exposed?</div>
           <div class="question">What should I fix first?</div>
           <div class="question">What findings have the biggest score impact?</div>
-          <div class="question">Create a 30/60/90 day roadmap.</div>
+          <div class="question">Create a 30/60/90 day security roadmap.</div>
         </div>
       </div>
     </section>
 
     <section class="section alt-bg">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Dashboard</p>
+          <h2>Customer-Facing Security Command Center</h2>
+        </div>
+
+        <div class="grid three-col">
+          <div class="card">
+            <h3>Executive Overview</h3>
+            <p>
+              Shows the overall maturity score, pillar-level scores, open findings,
+              top risks, and AI-generated executive summary.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Findings Explorer</h3>
+            <p>
+              Lets customers filter findings by service, severity, region, status,
+              compliance category, and score impact.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Score Improvement View</h3>
+            <p>
+              Shows the current score, projected score, and the highest-impact actions
+              needed to reach a stronger security posture.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>AI Security Chat</h3>
+            <p>
+              Enables users to ask questions about their findings, maturity score,
+              remediation options, and security roadmap.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Remediation Center</h3>
+            <p>
+              Provides AI-generated remediation plans, dry-run commands, approval
+              status, and score improvement estimates.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Reports</h3>
+            <p>
+              Generates executive summaries, technical findings reports, and
+              30/60/90-day improvement roadmaps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Governance</p>
@@ -227,29 +324,31 @@
 
         <div class="grid two-col">
           <div class="card">
-            <h3>Controls</h3>
+            <h3>Safety Controls</h3>
             <ul class="clean-list">
               <li>Read-only by default</li>
               <li>Dry-run remediation only</li>
-              <li>Human approval required</li>
+              <li>Human approval required before action</li>
               <li>CloudWatch audit logging</li>
               <li>S3 and DynamoDB encryption</li>
               <li>Least-privilege IAM</li>
             </ul>
           </div>
+
           <div class="card">
-            <h3>Value to the Customer</h3>
+            <h3>Customer Value</h3>
             <p>
-              The goal is not just to show findings. The goal is to help customers
-              understand their current posture, quantify maturity, and accelerate
-              improvement using AI-driven recommendations and guided next steps.
+              The goal is not just to show security findings. The goal is to help
+              customers understand their current AWS posture, quantify maturity,
+              identify the highest-impact improvements, and accelerate security
+              adoption using agentic AI.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Roadmap</p>
@@ -260,36 +359,60 @@
           <div class="timeline-item">
             <span class="timeline-phase">Phase 1</span>
             <div>
-              <h3>Prowler Ingestion</h3>
-              <p>Run scans, export findings to S3, normalize results.</p>
+              <h3>Findings Lake Foundation</h3>
+              <p>
+                Centralize raw and processed AWS security posture findings in Amazon S3.
+              </p>
             </div>
           </div>
+
           <div class="timeline-item">
             <span class="timeline-phase">Phase 2</span>
             <div>
               <h3>Scoring Engine</h3>
-              <p>Calculate 0–5 posture scores and score improvement paths.</p>
+              <p>
+                Calculate 0–5 maturity scores and identify the fastest improvement path.
+              </p>
             </div>
           </div>
+
           <div class="timeline-item">
             <span class="timeline-phase">Phase 3</span>
             <div>
               <h3>Dashboard</h3>
-              <p>Build executive overview, findings explorer, and remediation views.</p>
+              <p>
+                Build executive overview, findings explorer, score view, and remediation center.
+              </p>
             </div>
           </div>
+
           <div class="timeline-item">
             <span class="timeline-phase">Phase 4</span>
             <div>
-              <h3>AI Chat + Bedrock</h3>
-              <p>Enable natural-language investigation and AI-driven explanations.</p>
+              <h3>AI Chat + Amazon Bedrock</h3>
+              <p>
+                Enable natural-language security investigation and AI-driven explanations.
+              </p>
             </div>
           </div>
+
           <div class="timeline-item">
             <span class="timeline-phase">Phase 5</span>
             <div>
               <h3>MCP Validation</h3>
-              <p>Add governed AWS documentation and context validation.</p>
+              <p>
+                Add governed AWS documentation and context validation for recommendations.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-phase">Phase 6</span>
+            <div>
+              <h3>Reports and Demo Automation</h3>
+              <p>
+                Generate customer-ready reports, security roadmaps, and repeatable demo workflows.
+              </p>
             </div>
           </div>
         </div>
@@ -299,7 +422,10 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Agentic GenAI Security Accelerator • Prowler-first AWS security posture scoring and AI-guided remediation</p>
+      <p>
+        Agentic GenAI Security Accelerator • AWS-native security posture scoring,
+        agentic AI guidance, MCP validation, and customer-facing dashboarding.
+      </p>
     </div>
   </footer>
 </body>
