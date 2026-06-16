@@ -177,33 +177,28 @@
           <p class="section-label">Maturity Scoring</p>
           <h2>Security Maturity Scoring Model</h2>
           <p>
-            The platform translates technical findings into a measurable security maturity score.
-            Each pillar is scored from 0 to 5, allowing teams to understand current posture,
-            identify control gaps, prioritize the highest-impact remediations, and track
-            improvement over time.
+            The platform converts security findings into an explainable maturity model.
+            Findings are mapped to security pillars, weighted by risk and control impact,
+            and translated into a 0–5 maturity view. Teams can see which controls are driving
+            risk, which remediations matter most, and how improvement can be measured over time.
           </p>
         </div>
 
-        <div class="grid five-col" style="margin-top:32px">
+        <div class="grid three-col" style="margin-top:32px">
           <div class="score-card">
-            <div class="score-val">2.02</div>
-            <div class="score-label">Current Score</div>
+            <div class="score-val">0–5</div>
+            <div class="score-label">Maturity Model</div>
+            <p style="font-size:0.85rem;margin-top:8px">Explainable pillar-level scoring across security domains</p>
           </div>
           <div class="score-card">
-            <div class="score-val">62</div>
-            <div class="score-label">Open Findings</div>
+            <div class="score-val">&#x25B2;</div>
+            <div class="score-label">Control Impact</div>
+            <p style="font-size:0.85rem;margin-top:8px">Shows which findings lower maturity the most</p>
           </div>
           <div class="score-card">
-            <div class="score-val">29</div>
-            <div class="score-label">Passing Checks</div>
-          </div>
-          <div class="score-card">
-            <div class="score-val">33</div>
-            <div class="score-label">Failed Checks</div>
-          </div>
-          <div class="score-card">
-            <div class="score-val">5.0</div>
-            <div class="score-label">Target Maturity</div>
+            <div class="score-val">&#x2192;</div>
+            <div class="score-label">Improvement Path</div>
+            <p style="font-size:0.85rem;margin-top:8px">Prioritizes actions that move maturity forward</p>
           </div>
         </div>
       </div>
@@ -219,11 +214,11 @@
         </div>
 
         <div class="chat-examples">
-          <div class="chat-bubble">Why is my score 2.02?</div>
-          <div class="chat-bubble">Which findings have the biggest maturity impact?</div>
+          <div class="chat-bubble">Why is this pillar scoring low?</div>
+          <div class="chat-bubble">What controls are driving maturity down?</div>
           <div class="chat-bubble">Explain my Identity &amp; Access risks.</div>
           <div class="chat-bubble">Which S3 findings are repeated across resources?</div>
-          <div class="chat-bubble">What should I fix first?</div>
+          <div class="chat-bubble">What would improve our maturity fastest?</div>
           <div class="chat-bubble">Create a 30-day remediation plan.</div>
           <div class="chat-bubble">Generate AWS CLI commands for review.</div>
           <div class="chat-bubble">What would this remediation change?</div>
