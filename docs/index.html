@@ -3,416 +3,369 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agentic GenAI Security Accelerator</title>
+  <title>Agentic GenAI Security Maturity Accelerator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">AWS Security + Agentic GenAI + Security Posture Acceleration</p>
+      <p class="eyebrow">AWS Security Maturity + Amazon Bedrock + Controlled Remediation</p>
 
-      <h1>Agentic GenAI Security Accelerator</h1>
+      <h1>Agentic GenAI Security Maturity Accelerator</h1>
 
       <p class="hero-text">
-        An AWS-native security posture accelerator that helps customers understand,
-        score, and improve their cloud security maturity using AWS security services,
-        Amazon S3, Amazon Bedrock, MCP, and a customer-facing AI dashboard.
+        An AWS-native security maturity platform that combines security posture assessment,
+        Amazon Bedrock-powered reasoning, MCP-based AWS context, controlled remediation workflows,
+        approval gates, dry-run execution, and audit logging to help enterprises move from
+        fragmented findings to measurable security improvement.
       </p>
 
       <div class="hero-buttons">
-        <a href="#architecture" class="btn btn-primary">View Architecture</a>
-        <a href="#capabilities" class="btn btn-secondary">See Capabilities</a>
+        <a href="#architecture" class="btn btn-primary">Explore the Architecture</a>
+        <a href="#capabilities" class="btn btn-secondary">View Security Capabilities</a>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- What This Platform Does -->
     <section class="section">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Overview</p>
-          <h2>What We’re Building</h2>
+          <h2>What This Platform Does</h2>
         </div>
 
         <div class="grid two-col">
           <div class="card">
-            <h3>The Problem</h3>
+            <h3>The Challenge</h3>
             <p>
-              Customers often have fragmented security findings, unclear visibility into
-              their current AWS security posture, and no simple way to understand which
-              actions will improve maturity the fastest.
+              Enterprise security teams often have thousands of findings across identity,
+              network, data protection, logging, detection, and compliance services. The challenge
+              is not just seeing the findings — it is knowing which actions matter most, what they
+              impact, how to remediate safely, and how to prove improvement over time.
             </p>
           </div>
 
           <div class="card">
-            <h3>The Solution</h3>
+            <h3>The Platform</h3>
             <p>
-              This accelerator uses AWS security findings and posture signals, centralizes
-              them in <strong>Amazon S3</strong>, normalizes and scores the results, and
-              then uses <strong>Amazon Bedrock</strong>, <strong>MCP</strong>, and a
-              customer-facing dashboard to turn security data into actionable,
-              AI-guided posture improvement.
+              The Agentic GenAI Security Maturity Accelerator centralizes AWS security findings,
+              scores maturity across key pillars, explains risk in plain language, investigates
+              live AWS context using read-only tools, generates remediation plans, routes actions
+              through approval, supports dry-run execution, and enables controlled low-risk
+              remediation with full auditability.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Architecture -->
     <section id="architecture" class="section alt-bg">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Architecture</p>
-          <h2>End-to-End AWS Security Acceleration Flow</h2>
+          <h2>End-to-End Security Maturity Workflow</h2>
           <p>
-            The accelerator is designed as an AWS-native security posture workflow with
-            centralized findings, maturity scoring, AI enrichment, MCP validation, and
-            dashboard-based exploration.
+            The platform implements a complete security maturity pipeline from findings ingestion
+            through controlled remediation with approval, execution, and audit.
           </p>
         </div>
 
         <div class="architecture-flow">
           <div class="arch-box">Customer AWS Account</div>
           <div class="arrow">→</div>
-          <div class="arch-box">AWS Security Assessment Layer</div>
+          <div class="arch-box">Prowler / AWS Security Findings</div>
           <div class="arrow">→</div>
-          <div class="arch-box">Amazon S3 Security Findings Lake</div>
+          <div class="arch-box">Findings Import + Normalization</div>
           <div class="arrow">→</div>
-          <div class="arch-box">Ingestion Lambda</div>
+          <div class="arch-box">S3 Evidence Store</div>
           <div class="arrow">→</div>
-          <div class="arch-box">DynamoDB Findings Store</div>
+          <div class="arch-box">Security Maturity Scoring Engine</div>
           <div class="arrow">→</div>
-          <div class="arch-box">0–5 Scoring Engine</div>
+          <div class="arch-box">Amazon Bedrock Agent</div>
           <div class="arrow">→</div>
-          <div class="arch-box">Amazon Bedrock Agents</div>
+          <div class="arch-box">MCP + AWS Documentation Context</div>
           <div class="arrow">→</div>
-          <div class="arch-box">MCP Validation Layer</div>
+          <div class="arch-box">Findings Explorer</div>
           <div class="arrow">→</div>
-          <div class="arch-box">Dashboard + AI Chat + Reports</div>
+          <div class="arch-box">Remediation Planning</div>
+          <div class="arrow">→</div>
+          <div class="arch-box">Queue + Approval</div>
+          <div class="arrow">→</div>
+          <div class="arch-box accent-border">Dry-Run / Low-Risk Live Execution</div>
+          <div class="arrow">→</div>
+          <div class="arch-box">Audit Log + Before/After Verification</div>
         </div>
 
-        <div class="grid three-col mt-32">
+        <div class="grid four-col" style="margin-top:48px">
           <div class="card">
-            <h3>AWS Security Assessment Layer</h3>
-            <p>
-              Collects AWS security posture signals and findings across identity,
-              detection, data protection, logging, compliance, and governance areas.
-              Optional third-party assessment tools can also feed this layer when needed.
-            </p>
+            <h3>Security Findings Pipeline</h3>
+            <p>Imports AWS security findings, normalizes them into a consistent format, removes duplicate noise, and maps issues to maturity pillars and remediation actions.</p>
           </div>
-
           <div class="card">
-            <h3>S3 Findings Lake</h3>
-            <p>
-              Amazon S3 stores raw security findings, processed findings, AI analysis,
-              and generated reports. This creates a central evidence layer for the
-              accelerator.
-            </p>
+            <h3>Maturity Scoring Engine</h3>
+            <p>Calculates a 0–5 maturity score across security pillars and identifies the controls that have the greatest impact on improving the customer's posture.</p>
           </div>
-
           <div class="card">
-            <h3>Agentic AI Layer</h3>
-            <p>
-              Amazon Bedrock agents explain business impact, prioritize remediation,
-              generate improvement roadmaps, and power a natural-language security
-              conversation.
-            </p>
+            <h3>Agentic AI Control Plane</h3>
+            <p>Uses Amazon Bedrock and governed tool registration to explain findings, investigate AWS context, generate remediation plans, and guide approved workflows without giving the model unrestricted AWS access.</p>
+          </div>
+          <div class="card">
+            <h3>Controlled Remediation Workflow</h3>
+            <p>Supports queueing, approval, dry-run execution, before/after state capture, verification, audit logging, and limited low-risk live remediation through an allowlisted execution path.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Capabilities -->
     <section id="capabilities" class="section">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Capabilities</p>
-          <h2>Core Capabilities</h2>
+          <h2>Security Maturity Capabilities</h2>
         </div>
 
         <div class="grid three-col">
-          <div class="feature-card">
-            <h3>Security Posture Scoring</h3>
-            <p>
-              Calculates a 0–5 maturity score across security pillars so customers can
-              understand where they are today and what is missing.
-            </p>
+          <div class="card">
+            <h3>Security Maturity Scoring</h3>
+            <p>Calculates a 0–5 maturity score across identity, network security, data protection, detection, vulnerability management, and operational readiness.</p>
           </div>
-
-          <div class="feature-card">
-            <h3>AWS Findings Explorer</h3>
-            <p>
-              Displays normalized findings by severity, service, resource, compliance
-              mapping, ownership, remediation status, and score impact.
-            </p>
+          <div class="card">
+            <h3>Findings Deduplication</h3>
+            <p>Groups repeated findings by control and resource count so teams can focus on root causes instead of duplicate noise.</p>
           </div>
-
-          <div class="feature-card">
-            <h3>AI Security Chat</h3>
-            <p>
-              Lets customers ask natural-language questions such as “Why is my score
-              2.7?” or “What will bring me to a 5?”
-            </p>
+          <div class="card">
+            <h3>AWS Documentation Grounding</h3>
+            <p>Links remediation guidance to official AWS documentation and clearly labels response sources so recommendations remain explainable.</p>
           </div>
-
-          <div class="feature-card">
-            <h3>Remediation Guidance</h3>
-            <p>
-              Generates technical next steps, executive explanations, remediation
-              plans, and dry-run implementation guidance.
-            </p>
+          <div class="card">
+            <h3>Read-Only AWS Investigation</h3>
+            <p>Uses read-only AWS tools to inspect IAM, S3, EC2 security groups, CloudTrail, Security Hub, GuardDuty, and Inspector context when investigation mode is enabled.</p>
           </div>
-
-          <div class="feature-card">
-            <h3>MCP Validation</h3>
-            <p>
-              Uses MCP to validate recommendations against AWS documentation and
-              approved AWS context in a governed, explainable way.
-            </p>
+          <div class="card">
+            <h3>Remediation Planning</h3>
+            <p>Generates step-by-step remediation plans, AWS CLI examples, Terraform patches, CloudFormation examples, rollback plans, blast-radius analysis, and estimated score impact.</p>
           </div>
-
-          <div class="feature-card">
-            <h3>Customer Dashboard</h3>
-            <p>
-              Provides an executive overview, findings explorer, score improvement
-              view, remediation center, AI chat, and reporting experience.
-            </p>
+          <div class="card">
+            <h3>Remediation Queue and Approval</h3>
+            <p>Routes proposed actions into a queue with unique remediation action IDs, risk labels, approval status, and clear review context before execution.</p>
+          </div>
+          <div class="card">
+            <h3>Dry-Run Execution</h3>
+            <p>Runs the full execution workflow safely with simulated before-state, after-state, verification, and audit logging without changing AWS resources.</p>
+          </div>
+          <div class="card">
+            <h3>Low-Risk Live Remediation</h3>
+            <p>Supports approved low-risk remediation only when explicitly enabled, using an execution role, allowlist checks, before/after capture, verification, and audit logging.</p>
+          </div>
+          <div class="card">
+            <h3>Audit and Governance</h3>
+            <p>Records queued, approved, rejected, skipped, dry-run, blocked, and live execution events to support traceability and security governance.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Scoring -->
     <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Scoring Model</p>
-          <h2>0–5 Security Maturity Score</h2>
-        </div>
-
-        <div class="grid two-col">
-          <div class="card">
-            <h3>How the Score Works</h3>
-            <ul class="clean-list">
-              <li>Each security pillar is scored from 0 to 5.</li>
-              <li>Controls are marked as Implemented, Partial, Missing, Unknown, or Not Applicable.</li>
-              <li>Not Applicable controls do not reduce the score.</li>
-              <li>Applicable missing controls reduce the score.</li>
-              <li>The dashboard shows which actions will improve the score the fastest.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Security Pillars</h3>
-            <ul class="clean-list">
-              <li>Identity &amp; Governance</li>
-              <li>Visibility, Detection &amp; Response</li>
-              <li>Data Protection</li>
-              <li>Compliance &amp; Audit Readiness</li>
-              <li>Generative Security Intelligence</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="score-example">
-          <div class="score-card">
-            <span class="score-number">2.7</span>
-            <span class="score-label">Current Score</span>
-          </div>
-
-          <div class="score-card">
-            <span class="score-number">4.1</span>
-            <span class="score-label">Projected Score After Recommended Fixes</span>
-          </div>
-
-          <div class="score-card">
-            <span class="score-number">5.0</span>
-            <span class="score-label">Target Maturity</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-label">Interactive Experience</p>
-          <h2>Security Conversation With the Customer</h2>
+          <p class="section-label">Maturity Scoring</p>
+          <h2>Security Maturity Scoring Model</h2>
           <p>
-            The accelerator turns security posture data into a natural-language
-            conversation. Customers can ask what the findings mean, what they should
-            fix first, and what will improve their score.
+            The platform translates technical findings into a measurable security maturity score.
+            Each pillar is scored from 0 to 5, allowing teams to understand current posture,
+            identify control gaps, prioritize the highest-impact remediations, and track
+            improvement over time.
           </p>
         </div>
 
-        <div class="question-grid">
-          <div class="question">Why is my score 2.7?</div>
-          <div class="question">What are my highest-risk findings?</div>
-          <div class="question">What will bring me to a 5?</div>
-          <div class="question">Do I need AWS WAF?</div>
-          <div class="question">Which S3 buckets are exposed?</div>
-          <div class="question">What should I fix first?</div>
-          <div class="question">What findings have the biggest score impact?</div>
-          <div class="question">Create a 30/60/90 day security roadmap.</div>
+        <div class="grid five-col" style="margin-top:32px">
+          <div class="score-card">
+            <div class="score-val">2.02</div>
+            <div class="score-label">Current Score</div>
+          </div>
+          <div class="score-card">
+            <div class="score-val">62</div>
+            <div class="score-label">Open Findings</div>
+          </div>
+          <div class="score-card">
+            <div class="score-val">29</div>
+            <div class="score-label">Passing Checks</div>
+          </div>
+          <div class="score-card">
+            <div class="score-val">33</div>
+            <div class="score-label">Failed Checks</div>
+          </div>
+          <div class="score-card">
+            <div class="score-val">5.0</div>
+            <div class="score-label">Target Maturity</div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- AI Conversation -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">AI Assistant</p>
+          <h2>Security Operations Conversation</h2>
+          <p>Ask questions about findings, posture, remediation options, and operational context.</p>
+        </div>
+
+        <div class="chat-examples">
+          <div class="chat-bubble">Why is my score 2.02?</div>
+          <div class="chat-bubble">Which findings have the biggest maturity impact?</div>
+          <div class="chat-bubble">Explain my Identity &amp; Access risks.</div>
+          <div class="chat-bubble">Which S3 findings are repeated across resources?</div>
+          <div class="chat-bubble">What should I fix first?</div>
+          <div class="chat-bubble">Create a 30-day remediation plan.</div>
+          <div class="chat-bubble">Generate AWS CLI commands for review.</div>
+          <div class="chat-bubble">What would this remediation change?</div>
+          <div class="chat-bubble">Add this action to the remediation queue.</div>
+          <div class="chat-bubble">Run a dry-run execution for this approved action.</div>
+          <div class="chat-bubble">Did this change AWS?</div>
+          <div class="chat-bubble">Show the audit log for this remediation.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
     <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Dashboard</p>
-          <h2>Customer-Facing Security Command Center</h2>
+          <p class="section-label">Interface</p>
+          <h2>Enterprise Security Command Center</h2>
         </div>
 
         <div class="grid three-col">
           <div class="card">
-            <h3>Executive Overview</h3>
-            <p>
-              Shows the overall maturity score, pillar-level scores, open findings,
-              top risks, and AI-generated executive summary.
-            </p>
+            <h3>Executive Maturity Overview</h3>
+            <p>Shows overall maturity score, pillar scores, top risks, open findings, pass/fail counts, and AI-generated posture summary.</p>
           </div>
-
           <div class="card">
             <h3>Findings Explorer</h3>
-            <p>
-              Lets customers filter findings by service, severity, region, status,
-              compliance category, and score impact.
-            </p>
+            <p>Provides searchable findings with severity, resource, service, region, pillar, status, remediation guidance, and AWS documentation links.</p>
           </div>
-
           <div class="card">
-            <h3>Score Improvement View</h3>
-            <p>
-              Shows the current score, projected score, and the highest-impact actions
-              needed to reach a stronger security posture.
-            </p>
+            <h3>Pillar Detail Views</h3>
+            <p>Shows deduplicated failures, affected resources, root-cause groupings, and recommended actions for each maturity pillar.</p>
           </div>
-
           <div class="card">
-            <h3>AI Security Chat</h3>
-            <p>
-              Enables users to ask questions about their findings, maturity score,
-              remediation options, and security roadmap.
-            </p>
+            <h3>AI Security Assistant</h3>
+            <p>Answers questions about findings, AWS context, score impact, remediation options, and security maturity roadmap.</p>
           </div>
-
           <div class="card">
             <h3>Remediation Center</h3>
-            <p>
-              Provides AI-generated remediation plans, dry-run commands, approval
-              status, and score improvement estimates.
-            </p>
+            <p>Manages planned actions, queue status, approval workflow, dry-run execution, low-risk live execution eligibility, and rollback context.</p>
           </div>
-
           <div class="card">
-            <h3>Reports</h3>
-            <p>
-              Generates executive summaries, technical findings reports, and
-              30/60/90-day improvement roadmaps.
-            </p>
+            <h3>Audit Log Viewer</h3>
+            <p>Displays lifecycle events for queued, approved, rejected, skipped, dry-run, blocked, and executed actions.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Governance -->
     <section class="section">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Governance</p>
-          <h2>Built for Safe, Explainable Security Operations</h2>
+          <h2>Built for Safe Enterprise Remediation</h2>
         </div>
 
-        <div class="grid two-col">
-          <div class="card">
-            <h3>Safety Controls</h3>
-            <ul class="clean-list">
-              <li>Read-only by default</li>
-              <li>Dry-run remediation only</li>
-              <li>Human approval required before action</li>
-              <li>CloudWatch audit logging</li>
-              <li>S3 and DynamoDB encryption</li>
-              <li>Least-privilege IAM</li>
-            </ul>
-          </div>
+        <div class="badge-row">
+          <span class="badge badge-safe">Feature-flag controlled capabilities</span>
+          <span class="badge badge-safe">Read-only investigation mode</span>
+          <span class="badge badge-safe">Dry-run execution by default</span>
+          <span class="badge badge-safe">Human approval required</span>
+          <span class="badge badge-safe">Unique remediation action IDs</span>
+          <span class="badge badge-safe">Allowlisted low-risk live actions only</span>
+          <span class="badge badge-warn">Medium/high-risk live remediation disabled by default</span>
+          <span class="badge badge-warn">Blocklisted destructive actions</span>
+          <span class="badge badge-safe">Separate read-only and execution roles</span>
+          <span class="badge badge-safe">Before-state and after-state capture</span>
+          <span class="badge badge-safe">Post-execution verification</span>
+          <span class="badge badge-safe">Append-only audit logging</span>
+          <span class="badge badge-safe">AWS documentation grounding</span>
+          <span class="badge badge-warn">No remediation from chat text alone</span>
+        </div>
 
-          <div class="card">
-            <h3>Customer Value</h3>
-            <p>
-              The goal is not just to show security findings. The goal is to help
-              customers understand their current AWS posture, quantify maturity,
-              identify the highest-impact improvements, and accelerate security
-              adoption using agentic AI.
-            </p>
-          </div>
+        <div class="safety-callout">
+          <p><strong>Enterprise safety model:</strong> The platform is designed to increase security maturity without giving AI unrestricted control. Bedrock provides reasoning, but the backend control plane decides which tools are available, which IAM role is used, whether approval exists, whether dry-run or live mode is active, and whether an action is safe to execute.</p>
         </div>
       </div>
     </section>
 
+    <!-- Workflow -->
     <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Roadmap</p>
-          <h2>Implementation Phases</h2>
+          <p class="section-label">Operations</p>
+          <h2>Operational Workflow</h2>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-item">
-            <span class="timeline-phase">Phase 1</span>
-            <div>
-              <h3>Findings Lake Foundation</h3>
-              <p>
-                Centralize raw and processed AWS security posture findings in Amazon S3.
-              </p>
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Connect AWS Account</h3>
+              <p>Connect to the customer AWS account using configured credentials or roles.</p>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <span class="timeline-phase">Phase 2</span>
-            <div>
-              <h3>Scoring Engine</h3>
-              <p>
-                Calculate 0–5 maturity scores and identify the fastest improvement path.
-              </p>
+          <div class="workflow-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Run Security Assessment</h3>
+              <p>Run Prowler or import AWS security findings into the findings pipeline.</p>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <span class="timeline-phase">Phase 3</span>
-            <div>
-              <h3>Dashboard</h3>
-              <p>
-                Build executive overview, findings explorer, score view, and remediation center.
-              </p>
+          <div class="workflow-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Normalize and Score</h3>
+              <p>Normalize findings, deduplicate repeated issues, map findings to pillars, and calculate a 0–5 maturity score.</p>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <span class="timeline-phase">Phase 4</span>
-            <div>
-              <h3>AI Chat + Amazon Bedrock</h3>
-              <p>
-                Enable natural-language security investigation and AI-driven explanations.
-              </p>
+          <div class="workflow-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Investigate With Read-Only Tools</h3>
+              <p>Use approved read-only AWS tools to inspect identity, storage, network, logging, detection, and vulnerability context.</p>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <span class="timeline-phase">Phase 5</span>
-            <div>
-              <h3>MCP Validation</h3>
-              <p>
-                Add governed AWS documentation and context validation for recommendations.
-              </p>
+          <div class="workflow-step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h3>Generate Remediation Plan</h3>
+              <p>Create remediation steps, risk classification, blast-radius analysis, CLI/IaC examples, rollback plan, and estimated score impact.</p>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <span class="timeline-phase">Phase 6</span>
-            <div>
-              <h3>Reports and Demo Automation</h3>
-              <p>
-                Generate customer-ready reports, security roadmaps, and repeatable demo workflows.
-              </p>
+          <div class="workflow-step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h3>Queue and Approve</h3>
+              <p>Add the action to the remediation queue and approve or reject it through the dashboard approval modal.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-num">7</div>
+            <div class="step-content">
+              <h3>Execute Safely</h3>
+              <p>Run dry-run execution by default. If explicitly enabled, execute only approved low-risk allowlisted actions using the execution role.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-num">8</div>
+            <div class="step-content">
+              <h3>Verify and Audit</h3>
+              <p>Capture before-state, after-state, verification result, and audit log evidence for the remediation lifecycle.</p>
             </div>
           </div>
         </div>
@@ -423,8 +376,9 @@
   <footer class="footer">
     <div class="container">
       <p>
-        Agentic GenAI Security Accelerator • AWS-native security posture scoring,
-        agentic AI guidance, MCP validation, and customer-facing dashboarding.
+        Agentic GenAI Security Maturity Accelerator &bull; AWS-native posture scoring,
+        Bedrock-powered security reasoning, controlled remediation, approval workflows,
+        and audit-ready security maturity improvement.
       </p>
     </div>
   </footer>

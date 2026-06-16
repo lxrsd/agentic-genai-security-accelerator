@@ -265,3 +265,162 @@ strong {
     flex-direction: column;
   }
 }
+
+/* ─── Additional styles for enterprise landing page ─────────────── */
+
+.four-col {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.five-col {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.accent-border {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(255, 153, 0, 0.15);
+}
+
+/* Score cards */
+.score-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.score-val {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.score-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* Chat bubbles */
+.chat-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.chat-bubble {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+/* Badge row */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.badge {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.badge-safe {
+  border-color: rgba(70, 211, 154, 0.45);
+  color: #7ee2b8;
+}
+
+.badge-warn {
+  border-color: rgba(255, 153, 0, 0.45);
+  color: var(--accent);
+}
+
+/* Safety callout */
+.safety-callout {
+  margin-top: 28px;
+  background: rgba(255, 153, 0, 0.08);
+  border: 1px solid rgba(255, 153, 0, 0.35);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  padding: 20px 22px;
+}
+
+.safety-callout p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Workflow steps */
+.workflow-steps {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.workflow-step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+}
+
+.step-num {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #111;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  margin-bottom: 6px;
+}
+
+.step-content p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .four-col,
+  .five-col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .four-col,
+  .five-col {
+    grid-template-columns: 1fr;
+  }
+}
