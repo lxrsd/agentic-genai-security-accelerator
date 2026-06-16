@@ -216,3 +216,30 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# MCP configuration (contains local server settings)
+mcp_config.json
+
+# Prowler virtual environment (Python 3.12)
+.prowler-venv/
+
+# Prowler scan output and generated reports
+prowler-output*/
+*prowler-output*
+data/tmp/
+data/scans/
+data/logs/
+*.sarif
+*.asff.json
+*.ocsf.json
+
+# Runtime and audit artifacts
+data/audit/*.jsonl
+data/remediation/
+
+# Do NOT ignore these (customer-facing templates):
+!.env.demo
+!.env.live-low-risk.example
+!.env.findings-only.example
+!.env.example
+!.env.connected.example

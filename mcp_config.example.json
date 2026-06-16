@@ -1,0 +1,67 @@
+{
+  "mcpServers": {
+    "aws-knowledge": {
+      "name": "AWS Knowledge / Documentation MCP",
+      "command": "uvx",
+      "args": ["awslabs.aws-documentation-mcp-server@latest"],
+      "transport": "stdio",
+      "enabled": true,
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "description": "AWS documentation, best practices, and remediation references"
+    },
+    "aws-api": {
+      "name": "AWS API MCP (read-only)",
+      "command": "uvx",
+      "args": ["awslabs.aws-api-mcp-server@latest"],
+      "transport": "stdio",
+      "enabled": false,
+      "readOnly": true,
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_REGION": "us-east-1"
+      },
+      "description": "Read-only AWS API access for account context (requires AWS credentials)"
+    },
+    "iam": {
+      "name": "IAM MCP (read-only)",
+      "command": "uvx",
+      "args": ["awslabs.iam-mcp-server@latest"],
+      "transport": "stdio",
+      "enabled": false,
+      "readOnly": true,
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_REGION": "us-east-1"
+      },
+      "description": "Read-only IAM policy and role context (requires AWS credentials)"
+    },
+    "cloudtrail": {
+      "name": "CloudTrail MCP (optional)",
+      "command": "uvx",
+      "args": ["awslabs.cloudtrail-mcp-server@latest"],
+      "transport": "stdio",
+      "enabled": false,
+      "readOnly": true,
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_REGION": "us-east-1"
+      },
+      "description": "CloudTrail audit trail investigation context (requires AWS credentials)"
+    },
+    "securityhub": {
+      "name": "Security Hub MCP (optional)",
+      "command": "uvx",
+      "args": ["awslabs.securityhub-mcp-server@latest"],
+      "transport": "stdio",
+      "enabled": false,
+      "readOnly": true,
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_REGION": "us-east-1"
+      },
+      "description": "Consolidated security findings from Security Hub (requires AWS credentials)"
+    }
+  }
+}
