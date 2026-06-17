@@ -92,7 +92,8 @@ def run_setup(os_name):
             print(f"  Running: .\\{script}")
             print("-" * 60)
             subprocess.run([
-                "powershell", "-ExecutionPolicy", "Bypass", "-File", script
+                "powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+                "-File", script
             ])
         else:
             print("  Windows PowerShell scripts are missing.")
@@ -124,7 +125,8 @@ def run_server(os_name):
             print(f"  Starting: .\\{script}")
             print("-" * 60)
             subprocess.run([
-                "powershell", "-ExecutionPolicy", "Bypass", "-File", script
+                "powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+                "-File", script
             ])
         else:
             print("  Windows run script not found.")
@@ -151,7 +153,8 @@ def run_prowler_install(os_name):
         script = "scripts\\install_prowler.ps1"
         if Path(script).exists():
             subprocess.run([
-                "powershell", "-ExecutionPolicy", "Bypass", "-File", script
+                "powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
+                "-File", script
             ])
         else:
             print("  Manual install on Windows:")

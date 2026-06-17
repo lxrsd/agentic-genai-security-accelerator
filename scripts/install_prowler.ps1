@@ -1,34 +1,38 @@
-# Agentic GenAI Security Accelerator — Install Prowler (Windows)
+# Agentic GenAI Security Accelerator - Install Prowler (Windows)
 # Prowler is optional. Only needed for connected AWS security scans.
 
 $ErrorActionPreference = "Continue"
+$RepoRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
+Set-Location $RepoRoot
+
+$PipExe = Join-Path $RepoRoot ".venv\Scripts\pip.exe"
 
 Write-Host "=== Prowler Installation ===" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "  Prowler is an open-source AWS security assessment tool."
-Write-Host "  Installation may take several minutes due to its dependencies."
+Write-Host "  Installation may take several minutes."
 Write-Host ""
 Write-Host "  Prowler is NOT required for the sample workflow."
 Write-Host "  Install only if you want to run a connected AWS scan."
 Write-Host ""
 
 # Check if already installed
-$prowlerPath = & .venv\Scripts\python -c "import shutil; print(shutil.which('prowler') or '')" 2>$null
-if ($prowlerPath) {
-    Write-Host "  Prowler is already installed: $prowlerPath" -ForegroundColor Green
+$prowlerCmd = Get-Command prowler -ErrorAction SilentlyContinue
+if ($prowlerCmd) {
+    Write-Host "  Prowler is already installed." -ForegroundColor Green
     exit 0
 }
 
 # Check venv
-if (-not (Test-Path ".venv\Scripts\pip.exe")) {
+if (-not (Test-Path $PipExe)) {
     Write-Host "ERROR: .venv not found. Run .\scripts\setup_demo.ps1 first." -ForegroundColor Red
     exit 1
 }
 
-Write-Host "  Installing Prowler into .venv (this may take 5-10 minutes)..."
+Write-Host "  Installing Prowler (this may take 5-10 minutes)..."
 Write-Host ""
 
-& .venv\Scripts\pip install prowler
+& $PipExe install prowler
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""

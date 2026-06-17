@@ -1,69 +1,66 @@
-# Agentic GenAI Security Accelerator — Windows Setup
+# Agentic GenAI Security Accelerator - Windows Setup
 # Installs core dependencies. Prowler is NOT installed by default.
-# Use --with-prowler or .\scripts\install_prowler.ps1 for connected AWS scans.
 
 $ErrorActionPreference = "Continue"
+$RepoRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
+Set-Location $RepoRoot
 
-Write-Host "=== Agentic GenAI Security Accelerator — Setup ===" -ForegroundColor Cyan
+Write-Host "=== Agentic GenAI Security Accelerator - Setup ===" -ForegroundColor Cyan
 Write-Host ""
 
-# Check Python
-$python = $null
-if (Get-Command py -ErrorAction SilentlyContinue) { $python = "py" }
-elseif (Get-Command python -ErrorAction SilentlyContinue) { $python = "python" }
-elseif (Get-Command python3 -ErrorAction SilentlyContinue) { $python = "python3" }
+# Find Python
+$PythonCmd = $null
+if (Get-Command py -ErrorAction SilentlyContinue) {
+    $PythonCmd = "py"
+} elseif (Get-Command python -ErrorAction SilentlyContinue) {
+    $PythonCmd = "python"
+} elseif (Get-Command python3 -ErrorAction SilentlyContinue) {
+    $PythonCmd = "python3"
+}
 
-if (-not $python) {
-    Write-Host "ERROR: Python is required. Install Python from https://python.org" -ForegroundColor Red
+if (-not $PythonCmd) {
+    Write-Host "ERROR: Python is required. Install from https://python.org" -ForegroundColor Red
     exit 1
 }
 
-$pyVersion = & $python --version 2>&1
-Write-Host "  Python: $pyVersion" -ForegroundColor Green
+$PyVersion = & $PythonCmd --version 2>&1
+Write-Host "  Python: $PyVersion" -ForegroundColor Green
 
-# Check Python version
-$versionNum = & $python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
-$major = & $python -c "import sys; print(sys.version_info.major)"
-$minor = & $python -c "import sys; print(sys.version_info.minor)"
-
-if ([int]$major -eq 3 -and [int]$minor -lt 10) {
-    Write-Host ""
-    Write-Host "  WARNING: Python 3.10+ is recommended. Some deps may fail on $versionNum." -ForegroundColor Yellow
-    Write-Host ""
-}
-
-# Create venv
+# Create venv if missing
 if (-not (Test-Path ".venv")) {
     Write-Host "  Creating virtual environment..."
-    & $python -m venv .venv
+    & $PythonCmd -m venv .venv
 }
 Write-Host "  Virtual environment ready" -ForegroundColor Green
 
-# Activate venv
-$activateScript = ".venv\Scripts\Activate.ps1"
-if (Test-Path $activateScript) {
-    & $activateScript
+# Define paths
+$PythonExe = Join-Path $RepoRoot ".venv\Scripts\python.exe"
+$PipExe = Join-Path $RepoRoot ".venv\Scripts\pip.exe"
+
+if (-not (Test-Path $PythonExe)) {
+    Write-Host "ERROR: .venv\Scripts\python.exe not found after venv creation." -ForegroundColor Red
+    exit 1
 }
 
 # Install dependencies
 Write-Host ""
 Write-Host "  Installing Python dependencies..."
-& .venv\Scripts\pip install --upgrade pip -q 2>$null
-& .venv\Scripts\pip install -r requirements.txt -q
+& $PipExe install --upgrade pip setuptools wheel -q 2>$null
+& $PipExe install -r requirements.txt -q
 Write-Host "  Core dependencies installed" -ForegroundColor Green
 
-# Prowler status
+# Prowler check (native PowerShell - no inline Python)
 Write-Host ""
 Write-Host "--- Prowler Status ---"
-$prowlerExists = & .venv\Scripts\python -c "import shutil; print('yes' if shutil.which('prowler') else 'no')" 2>$null
-if ($prowlerExists -eq "yes") {
-    Write-Host "  Prowler found" -ForegroundColor Green
+$prowlerCmd = Get-Command prowler -ErrorAction SilentlyContinue
+if ($prowlerCmd) {
+    Write-Host "  Prowler CLI: Found" -ForegroundColor Green
 } else {
-    Write-Host "  Prowler is NOT required for the sample workflow." -ForegroundColor Yellow
+    Write-Host "  Prowler CLI: Not installed" -ForegroundColor Yellow
+    Write-Host "  Prowler is optional for the sample workflow."
     Write-Host "  Sample findings are already included."
     Write-Host "  Connected AWS scans require Prowler."
-    Write-Host "  Install later: .\scripts\install_prowler.ps1"
-    Write-Host ""
+    Write-Host "  To install later: .\scripts\install_prowler.ps1"
 }
 
 # Copy config files
@@ -86,10 +83,20 @@ if (-not (Test-Path "mcp_config.json")) {
 
 # Confirm sample findings
 Write-Host ""
-if (Test-Path "sample-data\prowler-output\sample-findings.json") {
+$samplePath = Join-Path $RepoRoot "sample-data\prowler-output\sample-findings.json"
+if (Test-Path $samplePath) {
     Write-Host "  Sample findings available" -ForegroundColor Green
 } else {
     Write-Host "  WARNING: Sample findings not found." -ForegroundColor Yellow
+}
+
+# AWS CLI check (informational)
+Write-Host ""
+$awsCmd = Get-Command aws -ErrorAction SilentlyContinue
+if ($awsCmd) {
+    Write-Host "  AWS CLI: Found" -ForegroundColor Green
+} else {
+    Write-Host "  AWS CLI: Not found (optional for sample workflow)" -ForegroundColor Yellow
 }
 
 # Summary
