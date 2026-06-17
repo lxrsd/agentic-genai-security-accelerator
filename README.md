@@ -27,6 +27,13 @@ Open: **http://127.0.0.1:8080**
 ./scripts/run_demo.sh
 ```
 
+### Direct commands (Windows PowerShell)
+
+```powershell
+.\scripts\setup_demo.ps1
+.\scripts\run_demo.ps1
+```
+
 The repository includes sample findings, so you can evaluate the full workflow before connecting an AWS account.
 
 **Default mode:**
