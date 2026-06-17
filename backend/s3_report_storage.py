@@ -162,8 +162,8 @@ class S3ReportStorage:
         except Exception as e:
             return {"status": "error", "bucket": bucket, "message": str(e)}
 
-    def upload_scan_report(self, local_dir: Path, scan_time: str = None, scan_mode: str = "ultra_micro") -> Dict[str, Any]:
-        """Upload Prowler scan report files to S3."""
+    def upload_scan_report(self, local_dir: Path, scan_time: str = None, scan_mode: str = "ultra_micro", scan_id: str = "") -> Dict[str, Any]:
+        """Upload Prowler scan report files to S3 with date/hour partitioned prefix."""
         if not self._client:
             return {"status": "error", "message": "S3 client not available"}
 
@@ -176,35 +176,62 @@ class S3ReportStorage:
         if validation["status"] not in ("ready",):
             return {"status": "unsafe", "message": f"Bucket not safe for upload: {validation['message']}"}
 
-        scan_time = scan_time or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H%M%SZ")
-        prefix = f"{self._prefix}/scans/{self._account_id}/{scan_time}-{scan_mode}"
+        now = datetime.now(timezone.utc)
+        scan_time = scan_time or now.strftime("%Y-%m-%dT%H%M%SZ")
+
+        # Date/hour partitioned prefix
+        year = now.strftime("%Y")
+        month = now.strftime("%m")
+        day = now.strftime("%d")
+        hour = now.strftime("%H")
+        scan_id_part = scan_id or scan_time
+
+        prefix = f"{self._prefix}/scans/{self._account_id}/year={year}/month={month}/day={day}/hour={hour}/{scan_id_part}"
 
         uploaded_files = []
         try:
+            # Upload raw Prowler output files
             for f in local_dir.iterdir():
                 if f.is_file():
-                    key = f"{prefix}/{f.name}"
+                    key = f"{prefix}/raw/{f.name}"
                     self._client.upload_file(str(f), bucket, key)
                     uploaded_files.append(key)
                     logger.info("Uploaded %s to s3://%s/%s", f.name, bucket, key)
+
+            # Also upload subdirectory files (Prowler 5.x creates subdirs)
+            for subdir in local_dir.iterdir():
+                if subdir.is_dir():
+                    for f in subdir.iterdir():
+                        if f.is_file():
+                            key = f"{prefix}/raw/{subdir.name}/{f.name}"
+                            self._client.upload_file(str(f), bucket, key)
+                            uploaded_files.append(key)
         except Exception as e:
             return {"status": "error", "message": f"Upload failed: {e}", "uploaded": uploaded_files}
 
         # Write manifest
+        dry_run = os.environ.get("DRY_RUN_REMEDIATION", "true").lower() == "true"
+        live_enabled = os.environ.get("REMEDIATION_EXECUTION_ENABLED", "false").lower() == "true" and not dry_run
+
         manifest = {
+            "scan_id": scan_id_part,
             "account_id": self._account_id,
             "region": self._region,
-            "scan_time": scan_time,
-            "storage_mode": "s3",
+            "scan_mode": scan_mode,
+            "started_at": scan_time,
+            "completed_at": now.isoformat(),
+            "local_output_dir": str(local_dir),
+            "s3_report_uri": f"s3://{bucket}/{prefix}/",
+            "storage_mode": "local+s3",
+            "dry_run_remediation": dry_run,
+            "live_aws_changes_enabled": live_enabled,
+            "secrets_logged": False,
             "bucket": bucket,
             "prefix": prefix,
             "prowler_files": [f.name for f in local_dir.iterdir() if f.is_file()],
-            "finding_count": 0,  # Updated after import
-            "score_source": "Prowler findings from S3",
-            "scoring_engine": "AWS Best-Practice Scoring Engine",
         }
 
-        manifest_key = f"{prefix}/manifest.json"
+        manifest_key = f"{prefix}/metadata/manifest.json"
         self._client.put_object(
             Bucket=bucket,
             Key=manifest_key,
@@ -212,8 +239,17 @@ class S3ReportStorage:
             ContentType="application/json",
         )
 
+        # Write scan-status.json
+        status_key = f"{prefix}/metadata/scan-status.json"
+        self._client.put_object(
+            Bucket=bucket,
+            Key=status_key,
+            Body=json.dumps({"status": "completed", "scan_mode": scan_mode, "scan_id": scan_id_part, "timestamp": now.isoformat()}, indent=2),
+            ContentType="application/json",
+        )
+
         # Update mode-specific latest pointer
-        latest = {"latest_prefix": prefix, "scan_time": scan_time, "manifest_key": manifest_key}
+        latest = {"latest_prefix": prefix, "scan_time": scan_time, "manifest_key": manifest_key, "s3_report_uri": f"s3://{bucket}/{prefix}/"}
         mode_latest_key = f"{self._prefix}/latest-{scan_mode.replace('_', '-')}.json"
         self._client.put_object(
             Bucket=bucket,
@@ -222,7 +258,7 @@ class S3ReportStorage:
             ContentType="application/json",
         )
 
-        # Update global latest-scan.json (always points to most recent successful scan)
+        # Update global latest-scan.json
         latest_key = f"{self._prefix}/latest-scan.json"
         self._client.put_object(
             Bucket=bucket,
@@ -235,6 +271,7 @@ class S3ReportStorage:
             "status": "uploaded",
             "bucket": bucket,
             "prefix": prefix,
+            "s3_report_uri": f"s3://{bucket}/{prefix}/",
             "files": uploaded_files,
             "manifest_key": manifest_key,
         }

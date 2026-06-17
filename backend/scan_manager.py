@@ -321,7 +321,7 @@ class ScanManager:
             # Stage 5: Upload to S3
             job.update("uploading_to_s3", "Uploading report to private S3 bucket...")
             storage_mode = os.environ.get("REPORT_STORAGE_MODE", "local")
-            if storage_mode == "s3":
+            if storage_mode in ("s3", "local+s3"):
                 try:
                     from backend.s3_report_storage import S3ReportStorage
                     from backend.api import PostureAPIHandler
@@ -329,7 +329,9 @@ class ScanManager:
                     account_id = identity.get("account_id", "")
                     if account_id:
                         storage = S3ReportStorage(account_id=account_id)
-                        storage.upload_scan_report(output_dir, scan_mode=job.scan_mode)
+                        upload_result = storage.upload_scan_report(output_dir, scan_mode=job.scan_mode, scan_id=job.scan_id)
+                        if upload_result.get("s3_report_uri"):
+                            job.s3_log_uri = upload_result["s3_report_uri"]
                 except Exception as e:
                     logger.warning("S3 upload failed: %s", e)
 

@@ -142,6 +142,26 @@ These are available as an alternative to `quickstart.py`:
 
 ---
 
+## Where Connected Scan Results Are Stored
+
+Sample findings run locally and do not require AWS.
+
+Connected AWS scans write raw Prowler results locally under:
+
+```
+data/tmp/prowler-runs/<scan_id>/<timestamp>/
+```
+
+For audit and repeatability, connected scan reports can also be saved to a private S3 bucket in the connected AWS account using date/hour prefixes:
+
+```
+s3://<bucket>/agentic-security-posture/scans/<account-id>/year=YYYY/month=MM/day=DD/hour=HH/<scan-id>/
+```
+
+The dashboard shows the storage destination before the scan starts. S3 bucket creation or upload requires explicit confirmation. Set `REPORT_STORAGE_MODE=local+s3` to enable dual storage.
+
+---
+
 ## Cost and Safety
 
 The sample workflow runs locally with included findings. AWS usage is only introduced when the user chooses connected AWS scans, Bedrock-powered AI, or optional live remediation.
