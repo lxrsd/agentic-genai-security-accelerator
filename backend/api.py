@@ -684,16 +684,24 @@ class PostureAPIHandler(BaseHTTPRequestHandler):
     def _handle_check_connections(self):
         """POST /api/check-connections — Auto-detect AWS credentials and check identity.
         
-        Accepts optional body: {"profile": "my-profile"}
-        If no profile provided, uses the standard boto3 credential chain:
-        - AWS_PROFILE env var
-        - Default AWS CLI profile  
-        - AWS SSO cached session
-        - Environment credentials
+        Accepts optional body: {"profile": "my-profile", "disconnect": true}
+        If disconnect=true, clears connected state without deleting local credentials.
         """
         body = self._read_json_body()
         if body is None:
             body = {}
+
+        # Handle disconnect
+        if body.get("disconnect"):
+            PostureAPIHandler.aws_identity_cache = {
+                "status": "not_connected",
+                "message": "Disconnected by user.",
+            }
+            self._send_json_response({
+                "aws_identity": PostureAPIHandler.aws_identity_cache,
+                "connections": PostureAPIHandler.connection_manager.get_all_status() if PostureAPIHandler.connection_manager else {},
+            })
+            return
         
         profile = body.get("profile", "")
         

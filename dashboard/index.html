@@ -1201,33 +1201,49 @@ function renderDrawerContent() {
   const connections = statusData.connections || {};
   const aws = statusData.aws_identity || {};
   const scan = statusData.prowler_scan || {};
-  const awsOk = !!(aws.account_id || aws.account || aws.arn);
+  const awsOk = !!(aws.account_id || aws.account || aws.arn) && aws.status === 'connected';
   let html = '';
 
   // AWS Identity Section
   html += `<div class="connection-card">
     <div class="conn-status"><span class="dot" style="background:${awsOk ? 'var(--green)' : 'var(--amber)'}"></span><span class="conn-name">AWS Identity</span></div>`;
+
   if (awsOk) {
     html += `<div class="conn-msg">
-      <div><strong>Account:</strong> ${aws.account_id || aws.account || 'N/A'}</div>
-      <div><strong>ARN:</strong> ${aws.arn || 'N/A'}</div>
-      <div><strong>Region:</strong> ${aws.region || 'us-east-1'}</div>
-      <div><strong>Profile:</strong> ${aws.profile || 'default'}</div>
+      <div style="margin-bottom:8px;padding:10px;background:var(--bg-elevated);border-radius:8px">
+        <div><strong>Account:</strong> ${aws.account_id || aws.account || 'N/A'}</div>
+        <div><strong>ARN:</strong> ${aws.arn || 'N/A'}</div>
+        <div><strong>Region:</strong> ${aws.region || 'us-east-1'}</div>
+        <div><strong>Profile:</strong> ${aws.profile || 'default'}</div>
+      </div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:6px">Connected mode is read-only by default. Live AWS changes remain disabled unless explicitly configured.</div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-secondary btn-sm" onclick="disconnectAws()">Disconnect AWS</button>
     </div>`;
   } else {
     html += `<div class="conn-msg">
-      <p>AWS credentials not detected. Configure using:</p>
-      <ul style="margin:8px 0 0 16px;font-size:12px;list-style:disc">
-        <li>AWS CLI profile: <code>aws configure</code></li>
-        <li>AWS SSO: <code>aws sso login --profile &lt;name&gt;</code></li>
-        <li>Environment variables (AWS_ACCESS_KEY_ID, etc.)</li>
-        <li>IAM role (if on AWS infrastructure)</li>
-      </ul>
-    </div>`;
+      <p style="margin-bottom:8px">AWS credentials were not detected on this machine.</p>
+      <p style="font-size:11px;color:var(--text-dim);margin-bottom:10px">You can still use the included sample findings without AWS credentials.</p>
+      <details style="font-size:12px;color:var(--text-dim)">
+        <summary style="cursor:pointer;color:var(--text-secondary);margin-bottom:6px">How to configure AWS credentials</summary>
+        <div style="margin-top:8px;padding-left:8px">
+          <strong>Windows / macOS / Linux:</strong><br>
+          <code>aws configure</code><br>
+          <code>aws sso login --profile &lt;name&gt;</code><br><br>
+          <strong>Other sources:</strong><br>
+          • Environment variables: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY<br>
+          • Shared files: ~/.aws/credentials (macOS/Linux) or C:\\Users\\&lt;you&gt;\\.aws\\credentials (Windows)<br>
+          • IAM role (if running on AWS infrastructure)
+        </div>
+      </details>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn btn-primary btn-sm" id="verifyAwsBtn" onclick="verifyAwsIdentity()">Verify AWS Identity</button>
+    </div>
+    <div style="font-size:10px;color:var(--text-dim);margin-top:8px">This uses AWS credentials already configured on your machine. Credentials are not stored in this repository.</div>`;
   }
-  html += `<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-    <button class="btn btn-primary btn-sm" onclick="checkConnection()">Verify AWS Identity</button>
-  </div></div>`;
+  html += `</div>`;
 
   // Scan Status
   html += `<div class="connection-card">
@@ -1254,14 +1270,28 @@ function renderDrawerContent() {
   container.innerHTML = html;
 }
 
-async function checkConnection() {
+async function verifyAwsIdentity() {
+  const btn = document.getElementById('verifyAwsBtn');
+  if (btn) { btn.textContent = 'Checking local AWS credentials...'; btn.disabled = true; }
   try {
     const result = await api('/api/check-connections', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({}) });
     if (result.aws_identity) statusData.aws_identity = result.aws_identity;
     if (result.connections) statusData.connections = result.connections;
     awsCardState = determineAwsCardState();
     renderHeader(); renderDrawerContent(); renderAwsSetupCard();
-  } catch (e) { console.error('Check connection failed:', e); }
+  } catch (e) {
+    console.error('Verify failed:', e);
+    if (btn) { btn.textContent = 'Verify AWS Identity'; btn.disabled = false; }
+  }
+}
+
+async function checkConnection() { return verifyAwsIdentity(); }
+
+async function disconnectAws() {
+  statusData.aws_identity = { status: 'not_connected', message: 'Disconnected by user.' };
+  awsCardState = 'not-connected';
+  renderHeader(); renderDrawerContent(); renderAwsSetupCard();
+  try { await api('/api/check-connections', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ disconnect: true }) }); } catch(e) {}
 }
 
 function formatConnName(name) { return name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); }
