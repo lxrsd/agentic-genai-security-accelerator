@@ -31,6 +31,7 @@ AWS credentials are only required for connected AWS scans, read-only investigati
 - Creates `.env` from `.env.demo`
 - Validates optional AWS/Bedrock/Prowler/MCP components
 - You may see terminal prompts during setup — these do not enable live remediation
+- Prowler is optional for sample workflow; required only for connected AWS scans
 
 ---
 
