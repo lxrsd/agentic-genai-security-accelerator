@@ -3,7 +3,7 @@
 import json
 import logging
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -116,7 +116,7 @@ class ProwlerImporter:
         return True
 
     @staticmethod
-    def _extract_finding_id(finding: Dict[str, Any]) -> str | None:
+    def _extract_finding_id(finding: Dict[str, Any]) -> Optional[str]:
         """Try to extract FindingId for logging purposes."""
         finding_info = finding.get("FindingInfo")
         if isinstance(finding_info, dict):

@@ -1,7 +1,7 @@
 """Normalizer - transforms raw Prowler findings into consistent internal schema."""
 
 import logging
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from backend.models import FindingStatus, NormalizedFinding, Severity
 
@@ -201,7 +201,7 @@ class Normalizer:
         )
 
     @staticmethod
-    def _extract_finding_id(raw_finding: Dict[str, Any]) -> str | None:
+    def _extract_finding_id(raw_finding: Dict[str, Any]) -> Optional[str]:
         """Try to extract FindingId for logging purposes."""
         if not isinstance(raw_finding, dict):
             return None

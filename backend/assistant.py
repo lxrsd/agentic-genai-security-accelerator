@@ -1,6 +1,6 @@
 """Simulated Security Assistant using MCP tools for grounded responses."""
 
-from typing import List
+from typing import List, Optional
 
 from backend.mcp_server import MCPServer
 
@@ -231,7 +231,7 @@ class SimulatedAssistant:
     # Helpers
     # ------------------------------------------------------------------
 
-    def _detect_pillar(self, message: str) -> str | None:
+    def _detect_pillar(self, message: str) -> Optional[str]:
         """Detect which pillar the user is asking about from the message."""
         lower = message.lower()
         for fragment in _PILLAR_FRAGMENTS:
