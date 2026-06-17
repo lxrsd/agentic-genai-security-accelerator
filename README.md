@@ -1,26 +1,36 @@
 # Agentic GenAI Security Accelerator
 
-**Scan → Score → Ask → Remediate → Improve**
+**From fragmented AWS findings to prioritized, governed, and audit-ready security improvement.**
 
-## Quick Start
+## Quick Start: Sample Workflow
 
 ```bash
 git clone https://github.com/lxrsd/agentic-genai-security-accelerator.git
 cd agentic-genai-security-accelerator
-./scripts/quickstart.sh
-```
-
-Or step by step:
-
-```bash
-./scripts/setup_demo.sh      # Installs Python deps, Prowler, MCP runtime
-./scripts/preflight_check.sh # Shows what's ready and what's missing
-./scripts/run_demo.sh        # Starts the dashboard
+./scripts/setup_demo.sh
+./scripts/run_demo.sh
 ```
 
 Open: **http://127.0.0.1:8080**
 
-The setup script automatically installs boto3, Prowler, and uv/uvx into the project virtual environment. No manual dependency commands needed.
+The repository includes sample findings, so you can evaluate the full workflow before connecting an AWS account.
+
+**Default mode:**
+- Investigation: enabled
+- Planning: enabled
+- Approval: required
+- Dry-run execution: enabled
+- Live AWS changes: **disabled**
+
+AWS credentials are only required for connected AWS scans, read-only investigation, or optional controlled live remediation.
+
+### What setup does
+
+- Creates `.venv` (local Python virtual environment)
+- Installs dependencies from `requirements.txt`
+- Creates `.env` from `.env.demo`
+- Validates optional AWS/Bedrock/Prowler/MCP components
+- You may see terminal prompts during setup — these do not enable live remediation
 
 ---
 

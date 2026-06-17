@@ -3,377 +3,324 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agentic GenAI Security Maturity Accelerator</title>
+  <title>Agentic GenAI Security Accelerator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">AWS Security Maturity + Amazon Bedrock + Controlled Remediation</p>
-
-      <h1>Agentic GenAI Security Maturity Accelerator</h1>
-
+      <p class="eyebrow">AWS Security Posture + Amazon Bedrock + Controlled Remediation</p>
+      <h1>Agentic GenAI Security Accelerator</h1>
       <p class="hero-text">
-        An AWS-native security maturity platform that combines security posture assessment,
-        Amazon Bedrock-powered reasoning, MCP-based AWS context, controlled remediation workflows,
-        approval gates, dry-run execution, and audit logging to help enterprises move from
-        fragmented findings to measurable security improvement.
+        From fragmented AWS findings to prioritized, governed, and audit-ready security improvement.
       </p>
-
+      <div class="badge-row" style="margin-bottom:28px">
+        <span class="badge badge-safe">AWS-native security posture workflow</span>
+        <span class="badge badge-safe">Amazon Bedrock-powered reasoning</span>
+        <span class="badge">Sample findings included</span>
+        <span class="badge badge-safe">Dry-run remediation by default</span>
+        <span class="badge badge-safe">Approval-gated and audit-ready</span>
+      </div>
       <div class="hero-buttons">
-        <a href="#architecture" class="btn btn-primary">Explore the Architecture</a>
-        <a href="#capabilities" class="btn btn-secondary">View Security Capabilities</a>
+        <a href="#try-it" class="btn btn-primary">Try the Sample Workflow</a>
+        <a href="https://github.com/lxrsd/agentic-genai-security-accelerator" class="btn btn-secondary">View GitHub Repository</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- What This Platform Does -->
+
+    <!-- What the accelerator does -->
     <section class="section">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">Overview</p>
-          <h2>What This Platform Does</h2>
+          <h2>What the Accelerator Does</h2>
         </div>
-
-        <div class="grid two-col">
-          <div class="card">
-            <h3>The Challenge</h3>
-            <p>
-              Enterprise security teams often have thousands of findings across identity,
-              network, data protection, logging, detection, and compliance services. The challenge
-              is not just seeing the findings — it is knowing which actions matter most, what they
-              impact, how to remediate safely, and how to prove improvement over time.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>The Platform</h3>
-            <p>
-              The Agentic GenAI Security Maturity Accelerator centralizes AWS security findings,
-              scores maturity across key pillars, explains risk in plain language, investigates
-              live AWS context using read-only tools, generates remediation plans, routes actions
-              through approval, supports dry-run execution, and enables controlled low-risk
-              remediation with full auditability.
-            </p>
-          </div>
+        <div class="card" style="max-width:860px">
+          <p>
+            The Agentic GenAI Security Accelerator ingests AWS security findings, normalizes and
+            deduplicates results, maps findings to security pillars, calculates an explainable 0–5
+            maturity view, uses Amazon Bedrock for security reasoning, supports read-only AWS
+            investigation, generates remediation plans, routes actions through approval, runs
+            dry-run execution by default, and records audit evidence.
+          </p>
+          <p>
+            It is designed for security teams who want to move from scattered findings to
+            prioritized, measurable, and governed security improvement — without giving AI
+            unrestricted access to AWS resources.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Architecture -->
-    <section id="architecture" class="section alt-bg">
+    <!-- Try it with sample data -->
+    <section id="try-it" class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Architecture</p>
-          <h2>End-to-End Security Maturity Workflow</h2>
+          <p class="section-label">Get Started</p>
+          <h2>Try It With Sample Findings</h2>
           <p>
-            The platform implements a complete security maturity pipeline from findings ingestion
-            through controlled remediation with approval, execution, and audit.
+            The repository includes sample Prowler-style findings so you can experience the
+            full workflow without connecting an AWS account first.
           </p>
         </div>
 
-        <div class="architecture-flow">
-          <div class="arch-box">Customer AWS Account</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Prowler / AWS Security Findings</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Findings Import + Normalization</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">S3 Evidence Store</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Security Maturity Scoring Engine</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Amazon Bedrock Agent</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">MCP + AWS Documentation Context</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Findings Explorer</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Remediation Planning</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Queue + Approval</div>
-          <div class="arrow">→</div>
-          <div class="arch-box accent-border">Dry-Run / Low-Risk Live Execution</div>
-          <div class="arrow">→</div>
-          <div class="arch-box">Audit Log + Before/After Verification</div>
+        <div class="card code-card">
+<pre>git clone https://github.com/lxrsd/agentic-genai-security-accelerator.git
+cd agentic-genai-security-accelerator
+./scripts/setup_demo.sh
+./scripts/run_demo.sh</pre>
         </div>
 
-        <div class="grid four-col" style="margin-top:48px">
+        <p style="margin-top:20px">Then open <strong>http://127.0.0.1:8080</strong> in your browser.</p>
+
+        <div class="grid two-col" style="margin-top:28px">
           <div class="card">
-            <h3>Security Findings Pipeline</h3>
-            <p>Imports AWS security findings, normalizes them into a consistent format, removes duplicate noise, and maps issues to maturity pillars and remediation actions.</p>
+            <h3>What You'll See</h3>
+            <ul class="clean-list">
+              <li>Sample findings load automatically</li>
+              <li>Security maturity score is populated</li>
+              <li>Pillars show evaluated results</li>
+              <li>Grouped findings with deduplication</li>
+              <li>AI assistant available (requires Bedrock)</li>
+              <li>Remediation planning and queue</li>
+              <li>Dry-run execution workflow</li>
+              <li>Audit log records actions</li>
+            </ul>
           </div>
           <div class="card">
-            <h3>Maturity Scoring Engine</h3>
-            <p>Calculates a 0–5 maturity score across security pillars and identifies the controls that have the greatest impact on improving the customer's posture.</p>
-          </div>
-          <div class="card">
-            <h3>Agentic AI Control Plane</h3>
-            <p>Uses Amazon Bedrock and governed tool registration to explain findings, investigate AWS context, generate remediation plans, and guide approved workflows without giving the model unrestricted AWS access.</p>
-          </div>
-          <div class="card">
-            <h3>Controlled Remediation Workflow</h3>
-            <p>Supports queueing, approval, dry-run execution, before/after state capture, verification, audit logging, and limited low-risk live remediation through an allowlisted execution path.</p>
+            <h3>Default Mode</h3>
+            <ul class="clean-list">
+              <li>Investigation: enabled</li>
+              <li>Planning: enabled</li>
+              <li>Approval: required</li>
+              <li>Dry-run execution: enabled</li>
+              <li>Live AWS changes: <strong>disabled</strong></li>
+              <li>Medium/high-risk remediation: <strong>disabled</strong></li>
+            </ul>
+            <p style="margin-top:12px;font-size:0.9rem">No AWS resources are modified in this mode.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Capabilities -->
-    <section id="capabilities" class="section">
+    <!-- What setup does -->
+    <section class="section">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Capabilities</p>
-          <h2>Security Maturity Capabilities</h2>
+          <p class="section-label">Setup</p>
+          <h2>What Gets Installed Automatically</h2>
+          <p><code>setup_demo.sh</code> prepares the local environment:</p>
         </div>
-
-        <div class="grid three-col">
+        <div class="grid two-col">
           <div class="card">
-            <h3>Security Maturity Scoring</h3>
-            <p>Calculates a 0–5 maturity score across identity, network security, data protection, detection, vulnerability management, and operational readiness.</p>
+            <ul class="clean-list">
+              <li>Creates a local Python virtual environment (<code>.venv</code>)</li>
+              <li>Installs dependencies from <code>requirements.txt</code></li>
+              <li>Installs or validates Prowler if needed</li>
+              <li>Creates <code>.env</code> from <code>.env.demo</code></li>
+            </ul>
           </div>
           <div class="card">
-            <h3>Findings Deduplication</h3>
-            <p>Groups repeated findings by control and resource count so teams can focus on root causes instead of duplicate noise.</p>
-          </div>
-          <div class="card">
-            <h3>AWS Documentation Grounding</h3>
-            <p>Links remediation guidance to official AWS documentation and clearly labels response sources so recommendations remain explainable.</p>
-          </div>
-          <div class="card">
-            <h3>Read-Only AWS Investigation</h3>
-            <p>Uses read-only AWS tools to inspect IAM, S3, EC2 security groups, CloudTrail, Security Hub, GuardDuty, and Inspector context when investigation mode is enabled.</p>
-          </div>
-          <div class="card">
-            <h3>Remediation Planning</h3>
-            <p>Generates step-by-step remediation plans, AWS CLI examples, Terraform patches, CloudFormation examples, rollback plans, blast-radius analysis, and estimated score impact.</p>
-          </div>
-          <div class="card">
-            <h3>Remediation Queue and Approval</h3>
-            <p>Routes proposed actions into a queue with unique remediation action IDs, risk labels, approval status, and clear review context before execution.</p>
-          </div>
-          <div class="card">
-            <h3>Dry-Run Execution</h3>
-            <p>Runs the full execution workflow safely with simulated before-state, after-state, verification, and audit logging without changing AWS resources.</p>
-          </div>
-          <div class="card">
-            <h3>Low-Risk Live Remediation</h3>
-            <p>Supports approved low-risk remediation only when explicitly enabled, using an execution role, allowlist checks, before/after capture, verification, and audit logging.</p>
-          </div>
-          <div class="card">
-            <h3>Audit and Governance</h3>
-            <p>Records queued, approved, rejected, skipped, dry-run, blocked, and live execution events to support traceability and security governance.</p>
+            <ul class="clean-list">
+              <li>Creates <code>mcp_config.json</code> from the example config</li>
+              <li>Runs a preflight check</li>
+              <li>Verifies whether AWS CLI and Bedrock are available</li>
+            </ul>
+            <p style="margin-top:12px;font-size:0.9rem">
+              You may see terminal prompts depending on your system. These are part of local
+              setup and do not enable live remediation.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Scoring -->
+    <!-- AWS credentials -->
     <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Maturity Scoring</p>
-          <h2>Security Maturity Scoring Model</h2>
-          <p>
-            The platform converts security findings into an explainable maturity model.
-            Findings are mapped to security pillars, weighted by risk and control impact,
-            and translated into a 0–5 maturity view. Teams can see which controls are driving
-            risk, which remediations matter most, and how improvement can be measured over time.
-          </p>
+          <p class="section-label">Requirements</p>
+          <h2>What Works Without AWS Credentials</h2>
         </div>
-
-        <div class="grid three-col" style="margin-top:32px">
-          <div class="score-card">
-            <div class="score-val">0–5</div>
-            <div class="score-label">Maturity Model</div>
-            <p style="font-size:0.85rem;margin-top:8px">Explainable pillar-level scoring across security domains</p>
+        <div class="grid two-col">
+          <div class="card">
+            <h3>Works Without AWS</h3>
+            <ul class="clean-list">
+              <li>Local dashboard</li>
+              <li>Sample findings and scoring</li>
+              <li>Findings explorer and pillar views</li>
+              <li>Dry-run workflow simulation</li>
+              <li>Queue, approval, and audit log</li>
+              <li>Safety documentation</li>
+            </ul>
           </div>
-          <div class="score-card">
-            <div class="score-val">&#x25B2;</div>
-            <div class="score-label">Control Impact</div>
-            <p style="font-size:0.85rem;margin-top:8px">Shows which findings lower maturity the most</p>
-          </div>
-          <div class="score-card">
-            <div class="score-val">&#x2192;</div>
-            <div class="score-label">Improvement Path</div>
-            <p style="font-size:0.85rem;margin-top:8px">Prioritizes actions that move maturity forward</p>
+          <div class="card">
+            <h3>Requires AWS Credentials</h3>
+            <ul class="clean-list">
+              <li>Connected AWS scan (live Prowler)</li>
+              <li>Read-only AWS investigation</li>
+              <li>Security Hub / GuardDuty / Inspector context</li>
+              <li>S3 report storage</li>
+              <li>Amazon Bedrock AI chat</li>
+              <li>Optional low-risk live remediation</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- AI Conversation -->
+    <!-- Bedrock -->
     <section class="section">
       <div class="container">
         <div class="section-heading">
           <p class="section-label">AI Assistant</p>
-          <h2>Security Operations Conversation</h2>
-          <p>Ask questions about findings, posture, remediation options, and operational context.</p>
+          <h2>Amazon Bedrock Access</h2>
         </div>
-
-        <div class="chat-examples">
-          <div class="chat-bubble">Why is this pillar scoring low?</div>
-          <div class="chat-bubble">What controls are driving maturity down?</div>
-          <div class="chat-bubble">Explain my Identity &amp; Access risks.</div>
-          <div class="chat-bubble">Which S3 findings are repeated across resources?</div>
-          <div class="chat-bubble">What would improve our maturity fastest?</div>
-          <div class="chat-bubble">Create a 30-day remediation plan.</div>
-          <div class="chat-bubble">Generate AWS CLI commands for review.</div>
-          <div class="chat-bubble">What would this remediation change?</div>
-          <div class="chat-bubble">Add this action to the remediation queue.</div>
-          <div class="chat-bubble">Run a dry-run execution for this approved action.</div>
-          <div class="chat-bubble">Did this change AWS?</div>
-          <div class="chat-bubble">Show the audit log for this remediation.</div>
+        <div class="card" style="max-width:860px">
+          <p>
+            Amazon Bedrock is used for the AI assistant and security reasoning. If Bedrock model
+            access or SDK support is missing, the dashboard still runs — but AI chat will be
+            unavailable until Bedrock is configured.
+          </p>
+          <ul class="clean-list" style="margin-top:12px">
+            <li>Bedrock usage incurs token-based AWS charges</li>
+            <li>Model access must be enabled in the selected AWS region</li>
+            <li>Updated boto3/botocore (≥1.34) is required for Bedrock Runtime</li>
+            <li>Without Bedrock, the sample workflow and scoring still function</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Dashboard -->
+    <!-- Safety -->
     <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Interface</p>
-          <h2>Enterprise Security Command Center</h2>
+          <p class="section-label">Safety</p>
+          <h2>Safe by Default</h2>
+          <p>The default local mode runs the full workflow in dry-run:</p>
         </div>
+        <div class="card code-card">
+<pre>INVESTIGATION_TOOLS_ENABLED=true
+REMEDIATION_PLANNING_ENABLED=true
+REMEDIATION_EXECUTION_ENABLED=true
+DRY_RUN_REMEDIATION=true
+REQUIRE_APPROVAL_FOR_ALL_REMEDIATION=true
+ALLOW_MEDIUM_RISK_REMEDIATION=false
+ALLOW_HIGH_RISK_REMEDIATION=false</pre>
+        </div>
+        <div class="badge-row" style="margin-top:20px">
+          <span class="badge badge-safe">Investigation enabled</span>
+          <span class="badge badge-safe">Planning enabled</span>
+          <span class="badge badge-safe">Approval required</span>
+          <span class="badge badge-safe">Dry-run execution enabled</span>
+          <span class="badge badge-warn">Live AWS changes disabled</span>
+          <span class="badge badge-warn">Medium/high-risk disabled</span>
+        </div>
+      </div>
+    </section>
 
-        <div class="grid three-col">
-          <div class="card">
-            <h3>Executive Maturity Overview</h3>
-            <p>Shows overall maturity score, pillar scores, top risks, open findings, pass/fail counts, and AI-generated posture summary.</p>
-          </div>
-          <div class="card">
-            <h3>Findings Explorer</h3>
-            <p>Provides searchable findings with severity, resource, service, region, pillar, status, remediation guidance, and AWS documentation links.</p>
-          </div>
-          <div class="card">
-            <h3>Pillar Detail Views</h3>
-            <p>Shows deduplicated failures, affected resources, root-cause groupings, and recommended actions for each maturity pillar.</p>
-          </div>
-          <div class="card">
-            <h3>AI Security Assistant</h3>
-            <p>Answers questions about findings, AWS context, score impact, remediation options, and security maturity roadmap.</p>
-          </div>
-          <div class="card">
-            <h3>Remediation Center</h3>
-            <p>Manages planned actions, queue status, approval workflow, dry-run execution, low-risk live execution eligibility, and rollback context.</p>
-          </div>
-          <div class="card">
-            <h3>Audit Log Viewer</h3>
-            <p>Displays lifecycle events for queued, approved, rejected, skipped, dry-run, blocked, and executed actions.</p>
+    <!-- Live remediation boundary -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Remediation</p>
+          <h2>Live Remediation Is Explicitly Opt-In</h2>
+        </div>
+        <div class="card" style="max-width:860px">
+          <p>Connecting AWS does <strong>not</strong> enable live remediation. Live remediation requires all of:</p>
+          <ul class="clean-list" style="margin-top:12px">
+            <li><code>DRY_RUN_REMEDIATION=false</code></li>
+            <li><code>EXECUTION_ROLE_ARN</code> configured</li>
+            <li>Approved remediation action ID</li>
+            <li>Low-risk allowlisted action</li>
+            <li>Before/after verification</li>
+            <li>Audit log entry</li>
+          </ul>
+          <div class="safety-callout" style="margin-top:20px">
+            <p>Live remediation should be tested only in a sandbox or controlled AWS account. The recommended starting point is the sample or dry-run workflow.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Governance -->
-    <section class="section">
+    <!-- Cost -->
+    <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Governance</p>
-          <h2>Built for Safe Enterprise Remediation</h2>
+          <p class="section-label">Cost</p>
+          <h2>Cost Model: Usage-Based and Controlled</h2>
         </div>
-
-        <div class="badge-row">
-          <span class="badge badge-safe">Feature-flag controlled capabilities</span>
-          <span class="badge badge-safe">Read-only investigation mode</span>
-          <span class="badge badge-safe">Dry-run execution by default</span>
-          <span class="badge badge-safe">Human approval required</span>
-          <span class="badge badge-safe">Unique remediation action IDs</span>
-          <span class="badge badge-safe">Allowlisted low-risk live actions only</span>
-          <span class="badge badge-warn">Medium/high-risk live remediation disabled by default</span>
-          <span class="badge badge-warn">Blocklisted destructive actions</span>
-          <span class="badge badge-safe">Separate read-only and execution roles</span>
-          <span class="badge badge-safe">Before-state and after-state capture</span>
-          <span class="badge badge-safe">Post-execution verification</span>
-          <span class="badge badge-safe">Append-only audit logging</span>
-          <span class="badge badge-safe">AWS documentation grounding</span>
-          <span class="badge badge-warn">No remediation from chat text alone</span>
-        </div>
-
-        <div class="safety-callout">
-          <p><strong>Enterprise safety model:</strong> The platform is designed to increase security maturity without giving AI unrestricted control. Bedrock provides reasoning, but the backend control plane decides which tools are available, which IAM role is used, whether approval exists, whether dry-run or live mode is active, and whether an action is safe to execute.</p>
+        <div class="card" style="max-width:860px">
+          <ul class="clean-list">
+            <li>Sample findings and local walkthrough can run without AWS usage</li>
+            <li>Bedrock usage is token-based if AI chat is used</li>
+            <li>S3 report storage is usually small for workshop-scale usage</li>
+            <li>Connected AWS scans vary by account size and enabled services</li>
+            <li>Live remediation is optional and may create service-specific charges</li>
+          </ul>
+          <p style="margin-top:14px;font-size:0.9rem">
+            The recommended starting point is the sample or dry-run workflow. Customers can
+            decide later whether to connect AWS, enable additional security service context,
+            or test low-risk live remediation.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Workflow -->
-    <section class="section alt-bg">
+    <section class="section">
       <div class="container">
         <div class="section-heading">
-          <p class="section-label">Operations</p>
-          <h2>Operational Workflow</h2>
+          <p class="section-label">Workflow</p>
+          <h2>Expected Customer Workflow</h2>
         </div>
-
         <div class="workflow-steps">
-          <div class="workflow-step">
-            <div class="step-num">1</div>
-            <div class="step-content">
-              <h3>Connect AWS Account</h3>
-              <p>Connect to the customer AWS account using configured credentials or roles.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="step-num">2</div>
-            <div class="step-content">
-              <h3>Run Security Assessment</h3>
-              <p>Run Prowler or import AWS security findings into the findings pipeline.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="step-num">3</div>
-            <div class="step-content">
-              <h3>Normalize and Score</h3>
-              <p>Normalize findings, deduplicate repeated issues, map findings to pillars, and calculate a 0–5 maturity score.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="step-num">4</div>
-            <div class="step-content">
-              <h3>Investigate With Read-Only Tools</h3>
-              <p>Use approved read-only AWS tools to inspect identity, storage, network, logging, detection, and vulnerability context.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="step-num">5</div>
-            <div class="step-content">
-              <h3>Generate Remediation Plan</h3>
-              <p>Create remediation steps, risk classification, blast-radius analysis, CLI/IaC examples, rollback plan, and estimated score impact.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="step-num">6</div>
-            <div class="step-content">
-              <h3>Queue and Approve</h3>
-              <p>Add the action to the remediation queue and approve or reject it through the dashboard approval modal.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="step-num">7</div>
-            <div class="step-content">
-              <h3>Execute Safely</h3>
-              <p>Run dry-run execution by default. If explicitly enabled, execute only approved low-risk allowlisted actions using the execution role.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="step-num">8</div>
-            <div class="step-content">
-              <h3>Verify and Audit</h3>
-              <p>Capture before-state, after-state, verification result, and audit log evidence for the remediation lifecycle.</p>
-            </div>
-          </div>
+          <div class="workflow-step"><div class="step-num">1</div><div class="step-content"><h3>Clone the repo</h3></div></div>
+          <div class="workflow-step"><div class="step-num">2</div><div class="step-content"><h3>Run setup</h3></div></div>
+          <div class="workflow-step"><div class="step-num">3</div><div class="step-content"><h3>Start dashboard</h3></div></div>
+          <div class="workflow-step"><div class="step-num">4</div><div class="step-content"><h3>Load sample findings</h3></div></div>
+          <div class="workflow-step"><div class="step-num">5</div><div class="step-content"><h3>Review maturity score and pillars</h3></div></div>
+          <div class="workflow-step"><div class="step-num">6</div><div class="step-content"><h3>Ask assistant what matters most</h3></div></div>
+          <div class="workflow-step"><div class="step-num">7</div><div class="step-content"><h3>Generate remediation plan</h3></div></div>
+          <div class="workflow-step"><div class="step-num">8</div><div class="step-content"><h3>Add action to queue and approve</h3></div></div>
+          <div class="workflow-step"><div class="step-num">9</div><div class="step-content"><h3>Run dry-run execution</h3></div></div>
+          <div class="workflow-step"><div class="step-num">10</div><div class="step-content"><h3>Review before/after and audit log</h3></div></div>
+          <div class="workflow-step"><div class="step-num">11</div><div class="step-content"><h3>Optionally connect AWS for real assessment</h3></div></div>
         </div>
       </div>
     </section>
+
+    <!-- Troubleshooting -->
+    <section class="section alt-bg">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Help</p>
+          <h2>Troubleshooting</h2>
+        </div>
+        <div class="card" style="max-width:860px">
+          <ul class="clean-list">
+            <li><strong>.venv not found:</strong> Run <code>./scripts/setup_demo.sh</code></li>
+            <li><strong>Port 8080 busy:</strong> Stop old server or <code>kill -9 $(lsof -ti:8080)</code></li>
+            <li><strong>Sample findings show 0:</strong> Confirm <code>sample-data/prowler-output/sample-findings.json</code> exists</li>
+            <li><strong>Bedrock unavailable:</strong> Confirm model access, AWS region, and boto3 ≥ 1.34</li>
+            <li><strong>AWS not connected:</strong> Configure AWS CLI or use sample data first</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
     <div class="container">
       <p>
-        Agentic GenAI Security Maturity Accelerator &bull; AWS-native posture scoring,
+        Agentic GenAI Security Accelerator &bull; AWS-native posture scoring,
         Bedrock-powered security reasoning, controlled remediation, approval workflows,
-        and audit-ready security maturity improvement.
+        and audit-ready security improvement.
       </p>
     </div>
   </footer>
