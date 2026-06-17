@@ -4,14 +4,28 @@
 
 ## Quick Start: Sample Workflow
 
+### Cross-platform launcher
+
+Mac/Linux:
 ```bash
-git clone https://github.com/lxrsd/agentic-genai-security-accelerator.git
-cd agentic-genai-security-accelerator
+python3 quickstart.py
+```
+
+Windows:
+```powershell
+py quickstart.py
+```
+
+The quickstart detects your operating system, prepares the local environment, uses included sample findings, and starts the dashboard.
+
+Open: **http://127.0.0.1:8080**
+
+### Direct commands (Mac/Linux)
+
+```bash
 ./scripts/setup_demo.sh
 ./scripts/run_demo.sh
 ```
-
-Open: **http://127.0.0.1:8080**
 
 The repository includes sample findings, so you can evaluate the full workflow before connecting an AWS account.
 
