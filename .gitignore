@@ -226,6 +226,8 @@ mcp_config.json
 # Prowler scan output and generated reports
 prowler-output*/
 *prowler-output*
+!sample-data/prowler-output/
+!sample-data/prowler-output/sample-findings.json
 data/tmp/
 data/scans/
 data/logs/

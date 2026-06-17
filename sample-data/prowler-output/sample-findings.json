@@ -1,0 +1,1180 @@
+[
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-user-mfa-enabled-001",
+      "Title": "IAM user does not have MFA enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:iam::123456789012:user/admin",
+    "ResourceType": "AwsIamUser",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "MFA is not enabled for IAM user admin",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable MFA for the IAM user to add an additional layer of authentication security.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-user-mfa-enabled-002",
+      "Title": "IAM user does not have MFA enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:iam::123456789012:user/developer1",
+    "ResourceType": "AwsIamUser",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "MFA is not enabled for IAM user developer1",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable MFA for the IAM user to add an additional layer of authentication security.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-user-mfa-enabled-003",
+      "Title": "IAM user has MFA enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:iam::123456789012:user/security-admin",
+    "ResourceType": "AwsIamUser",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "MFA is enabled for IAM user security-admin",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable MFA for the IAM user to add an additional layer of authentication security.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-root-access-key-001",
+      "Title": "Root account has active access keys"
+    },
+    "Severity": "Critical",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:iam::123456789012:root",
+    "ResourceType": "AwsIamUser",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "The root account has active access keys which poses a critical security risk",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Delete root account access keys and use IAM users with least-privilege policies instead.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#lock-away-credentials"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-password-policy-001",
+      "Title": "IAM password policy meets complexity requirements"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:iam::123456789012:account",
+    "ResourceType": "AwsIamAccountPasswordPolicy",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "IAM password policy requires minimum 14 characters with complexity requirements",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Set a strong password policy requiring minimum length, uppercase, lowercase, numbers, and symbols.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-excessive-policy-001",
+      "Title": "IAM policy allows full administrative privileges"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:iam::123456789012:policy/FullAdminAccess",
+    "ResourceType": "AwsIamPolicy",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "IAM policy FullAdminAccess grants full administrative privileges with Action:* and Resource:*",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Implement least-privilege access by scoping policies to specific actions and resources.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-role-trust-001",
+      "Title": "IAM role has properly scoped trust policy"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:iam::123456789012:role/LambdaExecutionRole",
+    "ResourceType": "AwsIamRole",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "IAM role LambdaExecutionRole has a trust policy scoped to lambda.amazonaws.com",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Ensure trust policies are scoped to specific services or accounts.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudtrail-enabled-001",
+      "Title": "CloudTrail is not enabled in all regions"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:cloudtrail:us-east-1:123456789012:trail/management-trail",
+    "ResourceType": "AwsCloudTrailTrail",
+    "Region": "us-east-1",
+    "ServiceName": "cloudtrail",
+    "Description": "CloudTrail trail management-trail is not configured for multi-region logging",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable multi-region CloudTrail to capture API activity across all AWS regions.",
+        "Url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudtrail-log-validation-001",
+      "Title": "CloudTrail log file validation is not enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:cloudtrail:us-east-1:123456789012:trail/management-trail",
+    "ResourceType": "AwsCloudTrailTrail",
+    "Region": "us-east-1",
+    "ServiceName": "cloudtrail",
+    "Description": "CloudTrail trail management-trail does not have log file integrity validation enabled",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable log file validation to ensure CloudTrail logs have not been tampered with.",
+        "Url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-validation-intro.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudtrail-s3-logging-001",
+      "Title": "CloudTrail logs are delivered to S3 bucket"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:cloudtrail:us-east-1:123456789012:trail/management-trail",
+    "ResourceType": "AwsCloudTrailTrail",
+    "Region": "us-east-1",
+    "ServiceName": "cloudtrail",
+    "Description": "CloudTrail trail management-trail delivers logs to S3 bucket cloudtrail-logs-123456789012",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Configure CloudTrail to deliver log files to an S3 bucket for long-term storage.",
+        "Url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-getting-started.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudwatch-alarm-001",
+      "Title": "CloudWatch alarms not configured for unauthorized API calls"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:cloudwatch:us-east-1:123456789012:alarm/UnauthorizedAPICalls",
+    "ResourceType": "AwsCloudWatchAlarm",
+    "Region": "us-east-1",
+    "ServiceName": "cloudwatch",
+    "Description": "No CloudWatch alarm is configured to monitor unauthorized API calls",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Create CloudWatch alarms for metric filters monitoring unauthorized API calls.",
+        "Url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudwatch-log-group-001",
+      "Title": "CloudWatch log group has retention policy configured"
+    },
+    "Severity": "Low",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:logs:us-east-1:123456789012:log-group:/aws/lambda/security-function",
+    "ResourceType": "AwsCloudWatchLogGroup",
+    "Region": "us-east-1",
+    "ServiceName": "cloudwatch",
+    "Description": "CloudWatch log group /aws/lambda/security-function has retention set to 90 days",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Set retention policies on all log groups to manage storage costs and compliance.",
+        "Url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-s3-public-access-001",
+      "Title": "S3 bucket has public access enabled"
+    },
+    "Severity": "Critical",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:s3:::company-public-assets-123456789012",
+    "ResourceType": "AwsS3Bucket",
+    "Region": "us-east-1",
+    "ServiceName": "s3",
+    "Description": "S3 bucket company-public-assets-123456789012 has Block Public Access settings disabled",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable S3 Block Public Access at the bucket level to prevent unintended public exposure.",
+        "Url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-s3-public-access-002",
+      "Title": "S3 bucket has public access blocked"
+    },
+    "Severity": "Critical",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:s3:::company-internal-data-123456789012",
+    "ResourceType": "AwsS3Bucket",
+    "Region": "us-east-1",
+    "ServiceName": "s3",
+    "Description": "S3 bucket company-internal-data-123456789012 has Block Public Access settings enabled",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable S3 Block Public Access at the bucket level to prevent unintended public exposure.",
+        "Url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-s3-encryption-001",
+      "Title": "S3 bucket does not have default encryption enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:s3:::company-logs-123456789012",
+    "ResourceType": "AwsS3Bucket",
+    "Region": "us-east-1",
+    "ServiceName": "s3",
+    "Description": "S3 bucket company-logs-123456789012 does not have default server-side encryption configured",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable default encryption on S3 buckets using SSE-S3 or SSE-KMS.",
+        "Url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-s3-versioning-001",
+      "Title": "S3 bucket has versioning enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:s3:::company-internal-data-123456789012",
+    "ResourceType": "AwsS3Bucket",
+    "Region": "us-east-1",
+    "ServiceName": "s3",
+    "Description": "S3 bucket company-internal-data-123456789012 has versioning enabled for data protection",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable versioning on S3 buckets to protect against accidental deletions and overwrites.",
+        "Url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-kms-key-rotation-001",
+      "Title": "KMS key does not have automatic rotation enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
+    "ResourceType": "AwsKmsKey",
+    "Region": "us-east-1",
+    "ServiceName": "kms",
+    "Description": "KMS key 12345678-1234-1234-1234-123456789012 does not have automatic annual rotation enabled",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable automatic key rotation to rotate KMS keys annually.",
+        "Url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-kms-key-rotation-002",
+      "Title": "KMS key has automatic rotation enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:kms:us-east-1:123456789012:key/87654321-4321-4321-4321-210987654321",
+    "ResourceType": "AwsKmsKey",
+    "Region": "us-east-1",
+    "ServiceName": "kms",
+    "Description": "KMS key 87654321-4321-4321-4321-210987654321 has automatic annual rotation enabled",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable automatic key rotation to rotate KMS keys annually.",
+        "Url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ec2-sg-open-001",
+      "Title": "Security group allows unrestricted inbound SSH access"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:security-group/sg-0123456789abcdef0",
+    "ResourceType": "AwsEc2SecurityGroup",
+    "Region": "us-east-1",
+    "ServiceName": "ec2",
+    "Description": "Security group sg-0123456789abcdef0 allows inbound SSH (port 22) from 0.0.0.0/0",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Restrict SSH access to specific IP ranges or use Systems Manager Session Manager instead.",
+        "Url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ec2-sg-open-002",
+      "Title": "Security group allows unrestricted inbound RDP access"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:security-group/sg-0123456789abcdef1",
+    "ResourceType": "AwsEc2SecurityGroup",
+    "Region": "us-east-1",
+    "ServiceName": "ec2",
+    "Description": "Security group sg-0123456789abcdef1 allows inbound RDP (port 3389) from 0.0.0.0/0",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Restrict RDP access to specific IP ranges or use a bastion host.",
+        "Url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ec2-sg-restricted-001",
+      "Title": "Security group restricts inbound access appropriately"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:security-group/sg-0123456789abcdef2",
+    "ResourceType": "AwsEc2SecurityGroup",
+    "Region": "us-east-1",
+    "ServiceName": "ec2",
+    "Description": "Security group sg-0123456789abcdef2 restricts inbound access to specific CIDR ranges",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Regularly review security group rules to ensure least-privilege network access.",
+        "Url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-vpc-flow-logs-001",
+      "Title": "VPC flow logs are not enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:vpc/vpc-0123456789abcdef0",
+    "ResourceType": "AwsEc2Vpc",
+    "Region": "us-east-1",
+    "ServiceName": "vpc",
+    "Description": "VPC vpc-0123456789abcdef0 does not have flow logs enabled for network monitoring",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable VPC Flow Logs to capture network traffic metadata for security analysis.",
+        "Url": "https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-vpc-flow-logs-002",
+      "Title": "VPC flow logs are enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:vpc/vpc-0123456789abcdef1",
+    "ResourceType": "AwsEc2Vpc",
+    "Region": "us-east-1",
+    "ServiceName": "vpc",
+    "Description": "VPC vpc-0123456789abcdef1 has flow logs enabled and delivering to CloudWatch Logs",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable VPC Flow Logs to capture network traffic metadata for security analysis.",
+        "Url": "https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ec2-sg-open-003",
+      "Title": "Security group allows unrestricted access to high-risk ports"
+    },
+    "Severity": "Critical",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-west-2:123456789012:security-group/sg-0aabbccdd1122334",
+    "ResourceType": "AwsEc2SecurityGroup",
+    "Region": "us-west-2",
+    "ServiceName": "ec2",
+    "Description": "Security group sg-0aabbccdd1122334 allows inbound access on port 3306 (MySQL) from 0.0.0.0/0",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Restrict database ports to application security groups only, never open to the internet.",
+        "Url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-inspector-vuln-001",
+      "Title": "EC2 instance has critical vulnerability findings"
+    },
+    "Severity": "Critical",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef0",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "inspector",
+    "Description": "EC2 instance i-0123456789abcdef0 has 3 critical CVEs (CVE-2023-44487, CVE-2023-4911, CVE-2023-38545) requiring immediate patching",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Apply security patches immediately using Systems Manager Patch Manager or manual updates.",
+        "Url": "https://docs.aws.amazon.com/inspector/latest/user/findings-managing.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-inspector-vuln-002",
+      "Title": "EC2 instance has high severity vulnerabilities"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef1",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "inspector",
+    "Description": "EC2 instance i-0123456789abcdef1 has 5 high severity package vulnerabilities requiring patching",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Use AWS Systems Manager Patch Manager to automate patching of EC2 instances.",
+        "Url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-inspector-vuln-003",
+      "Title": "EC2 instance is fully patched"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef2",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "inspector",
+    "Description": "EC2 instance i-0123456789abcdef2 has no critical or high severity vulnerability findings",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Continue regular patching using AWS Systems Manager Patch Manager.",
+        "Url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-patch.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ssm-managed-001",
+      "Title": "EC2 instance is not managed by Systems Manager"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef3",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "ssm",
+    "Description": "EC2 instance i-0123456789abcdef3 is not managed by AWS Systems Manager and cannot receive automated patches",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Install the SSM Agent and attach the AmazonSSMManagedInstanceCore policy to enable Systems Manager.",
+        "Url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ssm-managed-002",
+      "Title": "EC2 instance is managed by Systems Manager"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef2",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "ssm",
+    "Description": "EC2 instance i-0123456789abcdef2 is managed by AWS Systems Manager with SSM Agent reporting healthy",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Ensure all EC2 instances have SSM Agent installed and are managed by Systems Manager.",
+        "Url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-guardduty-enabled-001",
+      "Title": "GuardDuty is not enabled in all regions"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:guardduty:us-west-2:123456789012:detector",
+    "ResourceType": "AwsGuardDutyDetector",
+    "Region": "us-west-2",
+    "ServiceName": "guardduty",
+    "Description": "Amazon GuardDuty is not enabled in us-west-2, leaving the region without threat detection",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable GuardDuty in all regions to detect threats across your entire AWS footprint.",
+        "Url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_settingup.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-guardduty-enabled-002",
+      "Title": "GuardDuty is enabled with threat detection active"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:guardduty:us-east-1:123456789012:detector/abc123def456",
+    "ResourceType": "AwsGuardDutyDetector",
+    "Region": "us-east-1",
+    "ServiceName": "guardduty",
+    "Description": "Amazon GuardDuty is enabled in us-east-1 with all protection plans active",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable GuardDuty in all regions to detect threats across your entire AWS footprint.",
+        "Url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_settingup.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-guardduty-finding-001",
+      "Title": "GuardDuty detected cryptocurrency mining activity"
+    },
+    "Severity": "Critical",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef4",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "guardduty",
+    "Description": "GuardDuty detected CryptoCurrency:EC2/BitcoinTool.B!DNS activity on instance i-0123456789abcdef4",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Investigate the instance immediately, isolate it, and check for unauthorized access or malware.",
+        "Url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-guardduty-finding-002",
+      "Title": "GuardDuty detected unusual API call from known malicious IP"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:iam::123456789012:user/compromised-user",
+    "ResourceType": "AwsIamUser",
+    "Region": "us-east-1",
+    "ServiceName": "guardduty",
+    "Description": "GuardDuty detected UnauthorizedAccess:IAMUser/MaliciousIPCaller from IP 198.51.100.42 using credentials of user compromised-user",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Disable the compromised user credentials, review CloudTrail logs, and investigate scope of access.",
+        "Url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-iam.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-securityhub-enabled-001",
+      "Title": "Security Hub is enabled with standards active"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:securityhub:us-east-1:123456789012:hub/default",
+    "ResourceType": "AwsSecurityHubHub",
+    "Region": "us-east-1",
+    "ServiceName": "securityhub",
+    "Description": "AWS Security Hub is enabled with CIS and AWS Foundational Security Best Practices standards",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable Security Hub with relevant security standards for centralized findings management.",
+        "Url": "https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-securityhub-findings-001",
+      "Title": "Security Hub has unresolved critical findings"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:securityhub:us-east-1:123456789012:hub/default",
+    "ResourceType": "AwsSecurityHubHub",
+    "Region": "us-east-1",
+    "ServiceName": "securityhub",
+    "Description": "Security Hub has 12 unresolved critical findings that require immediate attention",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Review and remediate critical findings in Security Hub, prioritizing by severity and resource exposure.",
+        "Url": "https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-config-enabled-001",
+      "Title": "AWS Config is not enabled in all regions"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:config:eu-west-1:123456789012:config-recorder",
+    "ResourceType": "AwsConfigConfigurationRecorder",
+    "Region": "eu-west-1",
+    "ServiceName": "config",
+    "Description": "AWS Config recorder is not enabled in eu-west-1, preventing compliance monitoring",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable AWS Config in all regions to continuously monitor resource configuration compliance.",
+        "Url": "https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-config-enabled-002",
+      "Title": "AWS Config is enabled with compliance rules"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:config:us-east-1:123456789012:config-recorder/default",
+    "ResourceType": "AwsConfigConfigurationRecorder",
+    "Region": "us-east-1",
+    "ServiceName": "config",
+    "Description": "AWS Config recorder is enabled in us-east-1 with 15 active compliance rules",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable AWS Config in all regions to continuously monitor resource configuration compliance.",
+        "Url": "https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-config-rules-001",
+      "Title": "AWS Config rule has non-compliant resources"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:config:us-east-1:123456789012:config-rule/required-tags",
+    "ResourceType": "AwsConfigRule",
+    "Region": "us-east-1",
+    "ServiceName": "config",
+    "Description": "AWS Config rule required-tags has 23 non-compliant resources missing mandatory tags",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Apply required tags to all resources and use tag policies for enforcement.",
+        "Url": "https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-organizations-scp-001",
+      "Title": "Organization does not have service control policies enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:organizations::123456789012:organization/o-abc123def4",
+    "ResourceType": "AwsOrganizationsOrganization",
+    "Region": "us-east-1",
+    "ServiceName": "organizations",
+    "Description": "AWS Organization o-abc123def4 does not have Service Control Policies (SCPs) enabled for governance",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable SCPs in your organization to enforce guardrails across all member accounts.",
+        "Url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-organizations-trail-001",
+      "Title": "Organization has organizational CloudTrail trail"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:organizations::123456789012:organization/o-abc123def4",
+    "ResourceType": "AwsOrganizationsOrganization",
+    "Region": "us-east-1",
+    "ServiceName": "organizations",
+    "Description": "AWS Organization o-abc123def4 has an organizational CloudTrail trail for centralized logging",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Create an organization-level CloudTrail trail for centralized audit logging.",
+        "Url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-access-key-rotation-001",
+      "Title": "IAM access key has not been rotated in 90 days"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:iam::123456789012:user/cicd-deployer",
+    "ResourceType": "AwsIamUser",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "IAM user cicd-deployer has an access key that has not been rotated in 147 days",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Rotate IAM access keys every 90 days or switch to IAM roles for automated workloads.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-s3-logging-001",
+      "Title": "S3 bucket does not have access logging enabled"
+    },
+    "Severity": "Low",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:s3:::company-temp-uploads-123456789012",
+    "ResourceType": "AwsS3Bucket",
+    "Region": "us-east-1",
+    "ServiceName": "s3",
+    "Description": "S3 bucket company-temp-uploads-123456789012 does not have server access logging enabled",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable server access logging on S3 buckets to track access requests for security auditing.",
+        "Url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ec2-imdsv2-001",
+      "Title": "EC2 instance does not enforce IMDSv2"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef5",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "ec2",
+    "Description": "EC2 instance i-0123456789abcdef5 allows IMDSv1 which is vulnerable to SSRF credential theft attacks",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enforce IMDSv2 on all EC2 instances to prevent SSRF-based credential theft.",
+        "Url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ec2-imdsv2-002",
+      "Title": "EC2 instance enforces IMDSv2"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:instance/i-0123456789abcdef2",
+    "ResourceType": "AwsEc2Instance",
+    "Region": "us-east-1",
+    "ServiceName": "ec2",
+    "Description": "EC2 instance i-0123456789abcdef2 enforces IMDSv2 with HttpTokens set to required",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enforce IMDSv2 on all EC2 instances to prevent SSRF-based credential theft.",
+        "Url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudtrail-encryption-001",
+      "Title": "CloudTrail logs are not encrypted with KMS"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:cloudtrail:us-east-1:123456789012:trail/management-trail",
+    "ResourceType": "AwsCloudTrailTrail",
+    "Region": "us-east-1",
+    "ServiceName": "cloudtrail",
+    "Description": "CloudTrail trail management-trail does not use KMS encryption for log files at rest",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable KMS encryption for CloudTrail logs to protect audit trail integrity.",
+        "Url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/encrypting-cloudtrail-log-files-with-aws-kms.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-inspector-coverage-001",
+      "Title": "Inspector does not have full coverage of EC2 instances"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:inspector2:us-east-1:123456789012:coverage",
+    "ResourceType": "AwsInspectorCoverage",
+    "Region": "us-east-1",
+    "ServiceName": "inspector",
+    "Description": "Amazon Inspector only covers 60% of EC2 instances, leaving 4 instances without vulnerability scanning",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Ensure all EC2 instances have the SSM Agent installed to enable Inspector scanning coverage.",
+        "Url": "https://docs.aws.amazon.com/inspector/latest/user/getting_started_tutorial.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-guardduty-s3protection-001",
+      "Title": "GuardDuty S3 Protection is not enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:guardduty:us-east-1:123456789012:detector/abc123def456",
+    "ResourceType": "AwsGuardDutyDetector",
+    "Region": "us-east-1",
+    "ServiceName": "guardduty",
+    "Description": "GuardDuty S3 Protection feature is not enabled, limiting threat detection for S3 data events",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable GuardDuty S3 Protection to detect threats targeting your S3 buckets.",
+        "Url": "https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-config-delivery-001",
+      "Title": "AWS Config delivery channel is configured"
+    },
+    "Severity": "Low",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:config:us-east-1:123456789012:delivery-channel/default",
+    "ResourceType": "AwsConfigDeliveryChannel",
+    "Region": "us-east-1",
+    "ServiceName": "config",
+    "Description": "AWS Config delivery channel is configured to send configuration snapshots to S3 and SNS notifications",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Configure AWS Config delivery channels for S3 storage and SNS notifications.",
+        "Url": "https://docs.aws.amazon.com/config/latest/developerguide/manage-delivery-channel.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-kms-policy-001",
+      "Title": "KMS key policy allows public access"
+    },
+    "Severity": "Critical",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:kms:us-east-1:123456789012:key/aabbccdd-1122-3344-5566-778899aabbcc",
+    "ResourceType": "AwsKmsKey",
+    "Region": "us-east-1",
+    "ServiceName": "kms",
+    "Description": "KMS key aabbccdd-1122-3344-5566-778899aabbcc has a key policy that allows access from any AWS principal",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Restrict KMS key policies to specific IAM principals and conditions.",
+        "Url": "https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ssm-compliance-001",
+      "Title": "Systems Manager patch compliance is not met"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:ssm:us-east-1:123456789012:managed-instance/i-0123456789abcdef3",
+    "ResourceType": "AwsSsmManagedInstance",
+    "Region": "us-east-1",
+    "ServiceName": "ssm",
+    "Description": "Managed instance i-0123456789abcdef3 has 8 missing critical patches and is non-compliant",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Configure SSM Patch Manager maintenance windows to automate critical patch deployment.",
+        "Url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-patch-configure.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudwatch-metrics-001",
+      "Title": "CloudWatch does not have alarms for root account usage"
+    },
+    "Severity": "High",
+    "StatusCode": "FAIL",
+    "ResourceArn": "arn:aws:cloudwatch:us-east-1:123456789012:alarm/RootAccountUsage",
+    "ResourceType": "AwsCloudWatchAlarm",
+    "Region": "us-east-1",
+    "ServiceName": "cloudwatch",
+    "Description": "No CloudWatch alarm is configured to alert on root account usage which is a high-risk activity",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Create a CloudWatch alarm with metric filter for root account API activity.",
+        "Url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudtrail-integrated-001",
+      "Title": "CloudTrail is integrated with CloudWatch Logs"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:cloudtrail:us-east-1:123456789012:trail/management-trail",
+    "ResourceType": "AwsCloudTrailTrail",
+    "Region": "us-east-1",
+    "ServiceName": "cloudtrail",
+    "Description": "CloudTrail trail management-trail delivers events to CloudWatch Logs for real-time monitoring",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Integrate CloudTrail with CloudWatch Logs for real-time alerting on API activity.",
+        "Url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/send-cloudtrail-events-to-cloudwatch-logs.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-cloudwatch-alarm-002",
+      "Title": "CloudWatch alarm configured for security group changes"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:cloudwatch:us-east-1:123456789012:alarm/SecurityGroupChanges",
+    "ResourceType": "AwsCloudWatchAlarm",
+    "Region": "us-east-1",
+    "ServiceName": "cloudwatch",
+    "Description": "CloudWatch alarm is configured to detect and alert on security group configuration changes",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Create CloudWatch alarms for security-sensitive configuration changes.",
+        "Url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-guardduty-eks-001",
+      "Title": "GuardDuty EKS Protection is enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:guardduty:us-east-1:123456789012:detector/abc123def456",
+    "ResourceType": "AwsGuardDutyDetector",
+    "Region": "us-east-1",
+    "ServiceName": "guardduty",
+    "Description": "GuardDuty EKS Runtime Monitoring and EKS Audit Log Monitoring are enabled",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable GuardDuty EKS protection features for container workload threat detection.",
+        "Url": "https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-inspector-ecr-001",
+      "Title": "Inspector ECR scanning is enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:inspector2:us-east-1:123456789012:ecr-scanning",
+    "ResourceType": "AwsInspectorCoverage",
+    "Region": "us-east-1",
+    "ServiceName": "inspector",
+    "Description": "Amazon Inspector container image scanning is enabled for ECR repositories",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable Inspector ECR scanning to detect vulnerabilities in container images.",
+        "Url": "https://docs.aws.amazon.com/inspector/latest/user/scanning-ecr.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-s3-ssl-001",
+      "Title": "S3 bucket enforces SSL-only access"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:s3:::company-internal-data-123456789012",
+    "ResourceType": "AwsS3Bucket",
+    "Region": "us-east-1",
+    "ServiceName": "s3",
+    "Description": "S3 bucket company-internal-data-123456789012 has a bucket policy enforcing SSL-only connections",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Add a bucket policy condition to deny requests that are not over SSL/TLS.",
+        "Url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ec2-ebs-encryption-001",
+      "Title": "EBS default encryption is enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:ec2:us-east-1:123456789012:volume/vol-0123456789abcdef0",
+    "ResourceType": "AwsEc2Volume",
+    "Region": "us-east-1",
+    "ServiceName": "ec2",
+    "Description": "EBS default encryption is enabled in us-east-1 ensuring all new volumes are encrypted",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable EBS default encryption in all regions to ensure data-at-rest protection.",
+        "Url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-unused-creds-001",
+      "Title": "IAM credentials unused for 90 days are disabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:iam::123456789012:user/former-contractor",
+    "ResourceType": "AwsIamUser",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "IAM user former-contractor has credentials disabled after 90 days of inactivity",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Implement automated credential lifecycle policies to disable unused credentials.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_finding-unused.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-config-conformance-001",
+      "Title": "AWS Config conformance pack is deployed"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:config:us-east-1:123456789012:conformance-pack/SecurityBestPractices",
+    "ResourceType": "AwsConfigConformancePack",
+    "Region": "us-east-1",
+    "ServiceName": "config",
+    "Description": "AWS Config conformance pack SecurityBestPractices is deployed with 25 rules for compliance monitoring",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Deploy conformance packs to enforce organizational compliance standards.",
+        "Url": "https://docs.aws.amazon.com/config/latest/developerguide/conformance-packs.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-ssm-inventory-001",
+      "Title": "Systems Manager inventory collection is enabled"
+    },
+    "Severity": "Low",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:ssm:us-east-1:123456789012:resource-data-sync/InventorySync",
+    "ResourceType": "AwsSsmResourceDataSync",
+    "Region": "us-east-1",
+    "ServiceName": "ssm",
+    "Description": "Systems Manager inventory collection is enabled for all managed instances with daily sync",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable SSM Inventory to maintain visibility into software and configuration across instances.",
+        "Url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-inventory.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-iam-access-analyzer-001",
+      "Title": "IAM Access Analyzer is enabled"
+    },
+    "Severity": "High",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:access-analyzer:us-east-1:123456789012:analyzer/ConsoleAnalyzer",
+    "ResourceType": "AwsIamAccessAnalyzer",
+    "Region": "us-east-1",
+    "ServiceName": "iam",
+    "Description": "IAM Access Analyzer is enabled and monitoring for external access to resources",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable IAM Access Analyzer in all regions to identify resources shared externally.",
+        "Url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html"
+      }
+    }
+  },
+  {
+    "FindingInfo": {
+      "FindingId": "prowler-guardduty-malware-001",
+      "Title": "GuardDuty Malware Protection is enabled"
+    },
+    "Severity": "Medium",
+    "StatusCode": "PASS",
+    "ResourceArn": "arn:aws:guardduty:us-east-1:123456789012:detector/abc123def456",
+    "ResourceType": "AwsGuardDutyDetector",
+    "Region": "us-east-1",
+    "ServiceName": "guardduty",
+    "Description": "GuardDuty Malware Protection is enabled to scan EBS volumes attached to potentially compromised instances",
+    "Remediation": {
+      "Recommendation": {
+        "Text": "Enable GuardDuty Malware Protection for automated malware scanning on suspicious instances.",
+        "Url": "https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html"
+      }
+    }
+  }
+]
