@@ -1302,31 +1302,30 @@ function renderDrawerContent() {
 }
 
 // AWS identity state tracking
-let awsIdentityStatus = 'unverified'; // 'unverified' | 'checking' | 'failed' | 'preview' | 'connected'
+let awsIdentityChecked = false;
+let awsIdentityConfirmed = false;
 
 async function verifyAwsIdentity() {
-  awsIdentityStatus = 'checking';
-  renderDrawerContent();
+  const btn = document.getElementById('verifyAwsBtn');
+  if (btn) { btn.textContent = 'Verifying...'; btn.disabled = true; }
   try {
     const result = await api('/api/check-connections', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({}) });
     if (result.aws_identity) statusData.aws_identity = result.aws_identity;
     if (result.connections) statusData.connections = result.connections;
-    if (result.aws_identity && result.aws_identity.status === 'connected') {
-      awsIdentityStatus = 'preview';
-    } else {
-      awsIdentityStatus = 'failed';
-    }
+    awsIdentityChecked = true;
+    // Do NOT auto-confirm — user must click "Connect to this AWS account"
+    awsIdentityConfirmed = false;
     renderHeader(); renderDrawerContent(); renderAwsSetupCard();
   } catch (e) {
     console.error('Verify failed:', e);
-    awsIdentityStatus = 'failed';
+    awsIdentityChecked = true;
     statusData.aws_identity = { status: 'not_connected', message: 'Verification failed.' };
     renderDrawerContent();
   }
 }
 
 function confirmAwsConnect() {
-  awsIdentityStatus = 'connected';
+  awsIdentityConfirmed = true;
   awsCardState = determineAwsCardState();
   renderHeader(); renderDrawerContent(); renderAwsSetupCard();
 }
@@ -1335,7 +1334,8 @@ async function checkConnection() { return verifyAwsIdentity(); }
 
 async function disconnectAws() {
   statusData.aws_identity = { status: 'not_connected', message: 'Disconnected by user.' };
-  awsIdentityStatus = 'unverified';
+  awsIdentityChecked = false;
+  awsIdentityConfirmed = false;
   awsCardState = 'not-connected';
   renderHeader(); renderDrawerContent(); renderAwsSetupCard();
   try { await api('/api/check-connections', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ disconnect: true }) }); } catch(e) {}
